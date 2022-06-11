@@ -156,6 +156,8 @@ class Ui_Form(object):
         self.pushButton_8.clicked.connect(Form.pb8)
         self.pushButton_9.clicked.connect(Form.pb9)
 
+        print("hello")
+
         self.retranslateUi(Form)
         self.stackedWidget.setCurrentIndex(0)
         self.pushButton_2.clicked.connect(Form.face)
