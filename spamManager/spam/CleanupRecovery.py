@@ -10,6 +10,22 @@
                 spamMail
                 normalMail
 
+    API:
+    # 1、清理全部垃圾邮件
+    def spamCleanupAll()
+    # 2、恢复全部垃圾邮件
+    def spamRecoveryAll()
+    # 3、清理指定的一个垃圾邮件文件，
+    def spamCleanup(fileName)
+    # 4、恢复指定的一个垃圾邮件文件
+    def spamRecover(fileName)
+    # 5、返回全部垃圾邮件文件列表，对应功能——显示所有垃圾邮件文件
+    def spamAll()
+    # 6、清理指定的多个垃圾邮件文件
+    def spamCleanups(fileNameList)
+    # 7、恢复指定的多个垃圾邮件文件
+    def spamRecovers(fileNameList)
+
 """
 import shutil       # 文件移动
 import os           # 文件删除
