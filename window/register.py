@@ -9,7 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from core.database import *
+from window.main import *
+from window.dialog import *
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -17,7 +19,7 @@ class Ui_Form(object):
         Form.setEnabled(True)
         Form.resize(1020, 581)
         self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(600, 80, 451, 30))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(590, 80, 451, 31))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -29,59 +31,60 @@ class Ui_Form(object):
         self.pushButton_2.setObjectName("pushButton_2")
         self.horizontalLayout.addWidget(self.pushButton_2)
         self.pushButton_3 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.pushButton_3.setStyleSheet("")
         self.pushButton_3.setObjectName("pushButton_3")
         self.horizontalLayout.addWidget(self.pushButton_3)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.stackedWidget = QtWidgets.QStackedWidget(Form)
-        self.stackedWidget.setGeometry(QtCore.QRect(590, 180, 411, 311))
+        self.stackedWidget.setGeometry(QtCore.QRect(590, 140, 411, 341))
         self.stackedWidget.setObjectName("stackedWidget")
         self.page = QtWidgets.QWidget()
         self.page.setObjectName("page")
         self.pushButton_4 = QtWidgets.QPushButton(self.page)
-        self.pushButton_4.setGeometry(QtCore.QRect(10, 140, 93, 28))
+        self.pushButton_4.setGeometry(QtCore.QRect(0, 170, 93, 28))
         self.pushButton_4.setObjectName("pushButton_4")
         self.pushButton_5 = QtWidgets.QPushButton(self.page)
-        self.pushButton_5.setGeometry(QtCore.QRect(210, 140, 93, 28))
+        self.pushButton_5.setGeometry(QtCore.QRect(210, 170, 93, 28))
         self.pushButton_5.setObjectName("pushButton_5")
         self.radioButton = QtWidgets.QRadioButton(self.page)
-        self.radioButton.setGeometry(QtCore.QRect(10, 100, 141, 19))
+        self.radioButton.setGeometry(QtCore.QRect(0, 130, 141, 19))
         self.radioButton.setObjectName("radioButton")
         self.formLayoutWidget = QtWidgets.QWidget(self.page)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(0, 10, 301, 65))
+        self.formLayoutWidget.setGeometry(QtCore.QRect(0, 50, 301, 65))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout = QtWidgets.QFormLayout(self.formLayoutWidget)
         self.formLayout.setContentsMargins(0, 0, 0, 0)
         self.formLayout.setObjectName("formLayout")
-        self.pushButton_10 = QtWidgets.QPushButton(self.formLayoutWidget)
-        self.pushButton_10.setObjectName("pushButton_10")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.pushButton_10)
         self.lineEdit_4 = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit_4.setObjectName("lineEdit_4")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_4)
-        self.pushButton_11 = QtWidgets.QPushButton(self.formLayoutWidget)
-        self.pushButton_11.setObjectName("pushButton_11")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.pushButton_11)
         self.lineEdit_5 = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit_5.setObjectName("lineEdit_5")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_5)
+        self.label_2 = QtWidgets.QLabel(self.formLayoutWidget)
+        self.label_2.setObjectName("label_2")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_2)
+        self.label_7 = QtWidgets.QLabel(self.formLayoutWidget)
+        self.label_7.setObjectName("label_7")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_7)
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
         self.label_3 = QtWidgets.QLabel(self.page_2)
-        self.label_3.setGeometry(QtCore.QRect(10, 50, 431, 301))
+        self.label_3.setGeometry(QtCore.QRect(10, 70, 321, 271))
         self.label_3.setObjectName("label_3")
         self.pushButton_6 = QtWidgets.QPushButton(self.page_2)
-        self.pushButton_6.setGeometry(QtCore.QRect(100, 10, 93, 28))
+        self.pushButton_6.setGeometry(QtCore.QRect(0, 10, 93, 28))
         self.pushButton_6.setObjectName("pushButton_6")
         self.pushButton_9 = QtWidgets.QPushButton(self.page_2)
-        self.pushButton_9.setGeometry(QtCore.QRect(0, 10, 93, 28))
+        self.pushButton_9.setGeometry(QtCore.QRect(100, 10, 93, 28))
         self.pushButton_9.setObjectName("pushButton_9")
         self.stackedWidget.addWidget(self.page_2)
         self.page_4 = QtWidgets.QWidget()
         self.page_4.setObjectName("page_4")
         self.formLayoutWidget_2 = QtWidgets.QWidget(self.page_4)
-        self.formLayoutWidget_2.setGeometry(QtCore.QRect(10, 20, 291, 141))
+        self.formLayoutWidget_2.setGeometry(QtCore.QRect(10, 30, 291, 88))
         self.formLayoutWidget_2.setObjectName("formLayoutWidget_2")
         self.formLayout_2 = QtWidgets.QFormLayout(self.formLayoutWidget_2)
         self.formLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -105,82 +108,168 @@ class Ui_Form(object):
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
         self.pushButton_7 = QtWidgets.QPushButton(self.page_4)
-        self.pushButton_7.setGeometry(QtCore.QRect(10, 160, 93, 28))
+        self.pushButton_7.setGeometry(QtCore.QRect(10, 190, 93, 28))
         self.pushButton_7.setObjectName("pushButton_7")
         self.pushButton_8 = QtWidgets.QPushButton(self.page_4)
-        self.pushButton_8.setGeometry(QtCore.QRect(210, 160, 93, 28))
+        self.pushButton_8.setGeometry(QtCore.QRect(210, 190, 93, 28))
         self.pushButton_8.setObjectName("pushButton_8")
         self.stackedWidget.addWidget(self.page_4)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(20, 90, 501, 401))
         self.label.setObjectName("label")
 
+        import os
+        if os.path.exists('./personal/individual.txt'):
+            file = open('./personal/individual.txt', 'r')
+            id = file.readline()[:-1]
+            password = file.readline()
+            self.lineEdit_4.setText(id)
+            self.lineEdit_5.setText(password)
+
+        Form.setFixedSize(1020, 581)
         Form.setWindowTitle("垃圾邮件过滤系统")
         Form.setWindowIcon(QtGui.QIcon("./picture/icon.png"))
         Form.setStyleSheet('background-color: white')
         import ctypes
         ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")
-
-        def face():
-            self.pushButton_2.setStyleSheet('background-color: #83c0f4')
-            self.pushButton.setStyleSheet('background-color: white')
-            self.pushButton.setStyleSheet('border:1px solid #b8d7f0')
-            self.pushButton_3.setStyleSheet('background-color: white')
-            self.pushButton_3.setStyleSheet('border:1px solid #b8d7f0')
-            self.stackedWidget.setCurrentIndex(1)
-
-        def password():
-            self.pushButton.setStyleSheet('background-color: #83c0f4')
-            self.pushButton_2.setStyleSheet('background-color: white')
-            self.pushButton_2.setStyleSheet('border:1px solid #b8d7f0')
-            self.pushButton_3.setStyleSheet('background-color: white')
-            self.pushButton_3.setStyleSheet('border:1px solid #b8d7f0')
-            self.stackedWidget.setCurrentIndex(0)
-
-        def register():
-            self.pushButton_3.setStyleSheet('background-color: #83c0f4')
-            self.pushButton.setStyleSheet('background-color: white')
-            self.pushButton.setStyleSheet('border:1px solid #b8d7f0')
-            self.pushButton_2.setStyleSheet('background-color: white')
-            self.pushButton_2.setStyleSheet('border:1px solid #b8d7f0')
-            self.stackedWidget.setCurrentIndex(2)
-
-        Form.face = face
-        Form.password = password
-        Form.register = register
+        Form.face = self.face
+        Form.password = self.password
+        Form.register = self.register
+        Form.pb4 = self.pushButton4
+        Form.pb5 = self.pushButton5
+        Form.pb6 = self.pushButton6
+        Form.pb7 = self.pushButton7
+        Form.pb8 = self.pushButton8
+        Form.pb9 = self.pushButton9
         pixmap = QtGui.QPixmap("./picture/log.png")
         self.label.setPixmap(pixmap)
+        self.label_3.setStyleSheet("background-color: #000000")
         self.pushButton.setFixedSize(93, 28)
         self.pushButton_2.setFixedSize(99, 28)
         self.pushButton_3.setFixedSize(93, 28)
-        self.pushButton.setStyleSheet("border:1px solid #b8d7f0")
-        self.pushButton_2.setStyleSheet("border:1px solid #b8d7f0")
-        self.pushButton_3.setStyleSheet("border:1px solid #b8d7f0")
+        self.pushButton_2.clicked.connect(Form.face)
+        self.pushButton.clicked.connect(Form.password)
+        self.pushButton_4.clicked.connect(Form.pb4)
+        self.pushButton_5.clicked.connect(Form.pb5)
+        self.pushButton_6.clicked.connect(Form.pb6)
+        self.pushButton_7.clicked.connect(Form.pb7)
+        self.pushButton_8.clicked.connect(Form.pb8)
+        self.pushButton_9.clicked.connect(Form.pb9)
+
         self.retranslateUi(Form)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
         self.pushButton_2.clicked.connect(Form.face)
         self.pushButton.clicked.connect(Form.password)
         self.pushButton_3.clicked.connect(Form.register)
+        self.pushButton_4.clicked.connect(Form.pb4)
+        self.pushButton_5.clicked.connect(Form.pb5)
+        self.pushButton_7.clicked.connect(Form.pb7)
+        self.pushButton_8.clicked.connect(Form.pb8)
+        self.pushButton_6.clicked.connect(Form.pb6)
+        self.pushButton_9.clicked.connect(Form.pb9)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-       # Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton.setText(_translate("Form", "密码登录"))
         self.pushButton_2.setText(_translate("Form", "人脸识别登录"))
         self.pushButton_3.setText(_translate("Form", "注册"))
         self.pushButton_4.setText(_translate("Form", "登录"))
         self.pushButton_5.setText(_translate("Form", "清空"))
         self.radioButton.setText(_translate("Form", "记住用户和密码"))
-        self.pushButton_10.setText(_translate("Form", "用户名"))
-        self.pushButton_11.setText(_translate("Form", "密码"))
+        self.label_2.setText(_translate("Form", "用户ID"))
+        self.label_7.setText(_translate("Form", "密码"))
         self.label_3.setText(_translate("Form", "摄像头捕获的数据"))
-        self.pushButton_6.setText(_translate("Form", "录入新用户"))
-        self.pushButton_9.setText(_translate("Form", "开始识别"))
+        self.pushButton_6.setText(_translate("Form", "开始识别"))
+        self.pushButton_9.setText(_translate("Form", "录入新用户"))
         self.label_4.setText(_translate("Form", "用户名"))
         self.label_6.setText(_translate("Form", "用户ID"))
         self.label_5.setText(_translate("Form", "密码"))
         self.pushButton_7.setText(_translate("Form", "注册"))
         self.pushButton_8.setText(_translate("Form", "清空"))
-      #  self.label.setText(_translate("Form", "TextLabel"))
-        self.label_3.setStyleSheet("background: #000000")
+     #   self.label.setText(_translate("Form", "TextLabel"))
+
+    # 登录注册按钮
+    def face(self):
+        self.pushButton_2.setStyleSheet('background-color: #83c0f4')
+        self.pushButton.setStyleSheet('background-color: white')
+        self.pushButton_3.setStyleSheet('background-color: white')
+        self.stackedWidget.setCurrentIndex(1)
+
+        # 清空按钮的响应事件
+
+    def pushButton8(self):
+        self.lineEdit.setText("")
+        self.lineEdit_2.setText("")
+        self.lineEdit_3.setText("")
+
+    def password(self):
+        self.pushButton.setStyleSheet('background-color: #83c0f4')
+        self.pushButton_2.setStyleSheet('background-color: white')
+        self.pushButton_3.setStyleSheet('background-color: white')
+        self.stackedWidget.setCurrentIndex(0)
+
+    def register(self):
+        self.pushButton_3.setStyleSheet('background-color: #83c0f4')
+        self.pushButton.setStyleSheet('background-color: white')
+        self.pushButton_2.setStyleSheet('background-color: white')
+        self.stackedWidget.setCurrentIndex(2)
+
+        # 登录按钮的响应事件
+
+    def pushButton4(self):
+        id = self.lineEdit_4.text()
+        password = self.lineEdit_5.text()
+        result = selectUser(id, password)
+        if result == -1:
+            d = QtWidgets.QDialog()
+            d_ui = Ui_Dialog()
+            d_ui.setupUi(d)
+            d_ui.label.setText("登录失败!")
+            d.show()
+        else:
+            if self.radioButton.isChecked():
+                file = open("./personal/individual.txt", 'w')
+                file.write(self.lineEdit_4.text())
+                file.write("\n")
+                file.write(self.lineEdit_5.text())
+                file.close()
+            self.w = QtWidgets.QWidget()
+            self.w_ui = Ui_Main()
+            self.w_ui.setupUi(self.w)
+            self.w_ui.label.show()
+            self.w.show()
+            self.Form.close()
+
+        # 清空按钮的响应事件
+
+    def pushButton5(self):
+        self.lineEdit_4.setText("")
+        self.lineEdit_5.setText("")
+
+        # 注册按钮的响应事件
+
+    def pushButton7(self):
+        name = self.lineEdit.text()
+        id = self.lineEdit_3.text()
+        password = self.lineEdit_2.text()
+        result = insertUser(id, password, name)
+        if result == -1:
+            d = QtWidgets.QDialog()
+            d_ui = Ui_Dialog()
+            d_ui.setupUi(d)
+            d_ui.label.setText("注册失败!")
+            d.show()
+        else:
+            d = QtWidgets.QDialog()
+            d_ui = Ui_Dialog()
+            d_ui.setupUi(d)
+            d_ui.label.setText("注册成功!")
+            d.show()
+
+    def pushButton6(self):
+        pass
+
+    def pushButton9(self):
+        pass
