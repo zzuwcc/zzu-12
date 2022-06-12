@@ -137,6 +137,7 @@ class Ui_Form(object):
         self.pushButton_3.setFixedSize(93, 28)
         self.pushButton_2.clicked.connect(Form.face)
         self.pushButton.clicked.connect(Form.password)
+        self.pushButton_3.clicked.connect(Form.register)
         self.pushButton_4.clicked.connect(Form.pb4)
         self.pushButton_5.clicked.connect(Form.pb5)
         self.pushButton_7.clicked.connect(Form.pb7)
@@ -144,13 +145,6 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         self.stackedWidget.setCurrentIndex(0)
-        self.pushButton_2.clicked.connect(Form.face)
-        self.pushButton.clicked.connect(Form.password)
-        self.pushButton_3.clicked.connect(Form.register)
-        self.pushButton_4.clicked.connect(Form.pb4)
-        self.pushButton_5.clicked.connect(Form.pb5)
-        self.pushButton_7.clicked.connect(Form.pb7)
-        self.pushButton_8.clicked.connect(Form.pb8)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -177,6 +171,8 @@ class Ui_Form(object):
         self.pushButton.setStyleSheet('background-color: white')
         self.pushButton_3.setStyleSheet('background-color: white')
         self.stackedWidget.setCurrentIndex(1)
+
+
 
     # 清空按钮的响应事件
     def pushButton8(self):
@@ -231,10 +227,10 @@ class Ui_Form(object):
 
     # 注册按钮的响应事件
     def pushButton7(self):
-        name = self.lineEdit.text()
         id = self.lineEdit_3.text()
         password = self.lineEdit_2.text()
-        result = insertUser(id, password, name)
+        result = insertUser(id, password)
+        print(result)
         if result == -1:
             d = QtWidgets.QDialog()
             d_ui = Ui_Dialog()
