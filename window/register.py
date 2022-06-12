@@ -13,6 +13,7 @@ from core.database import *
 from window.main import *
 from window.dialog import *
 
+
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -60,6 +61,7 @@ class Ui_Form(object):
         self.lineEdit_4.setObjectName("lineEdit_4")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_4)
         self.lineEdit_5 = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.lineEdit_5.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_5.setObjectName("lineEdit_5")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_5)
         self.label_2 = QtWidgets.QLabel(self.formLayoutWidget)
@@ -93,6 +95,7 @@ class Ui_Form(object):
         self.label_5.setObjectName("label_5")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_5)
         self.lineEdit_2 = QtWidgets.QLineEdit(self.formLayoutWidget_2)
+        self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
         self.pushButton_7 = QtWidgets.QPushButton(self.page_4)
@@ -149,7 +152,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-      #  Form.setWindowTitle(_translate("Form", "Form"))
+        #  Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton.setText(_translate("Form", "密码登录"))
         self.pushButton_2.setText(_translate("Form", "人脸识别登录"))
         self.pushButton_3.setText(_translate("Form", "注册"))
@@ -163,7 +166,8 @@ class Ui_Form(object):
         self.label_5.setText(_translate("Form", "密码"))
         self.pushButton_7.setText(_translate("Form", "注册"))
         self.pushButton_8.setText(_translate("Form", "清空"))
-     #   self.label.setText(_translate("Form", "TextLabel"))
+
+    #   self.label.setText(_translate("Form", "TextLabel"))
 
     # 人脸识别方式登录接口  self.label_3变量是用来显示摄像头捕获的数据
     def face(self):
@@ -171,8 +175,6 @@ class Ui_Form(object):
         self.pushButton.setStyleSheet('background-color: white')
         self.pushButton_3.setStyleSheet('background-color: white')
         self.stackedWidget.setCurrentIndex(1)
-
-
 
     # 清空按钮的响应事件
     def pushButton8(self):
