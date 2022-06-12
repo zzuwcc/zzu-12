@@ -131,7 +131,11 @@
        <widget class="QLineEdit" name="lineEdit_4"/>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_5"/>
+       <widget class="QLineEdit" name="lineEdit_5">
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+       </widget>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label_2">
@@ -194,7 +198,11 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <widget class="QLineEdit" name="lineEdit_2">
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -329,8 +337,8 @@
    <slot>pb7()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>645</x>
-     <y>358</y>
+     <x>635</x>
+     <y>357</y>
     </hint>
     <hint type="destinationlabel">
      <x>644</x>
@@ -345,8 +353,8 @@
    <slot>pb8()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>852</x>
-     <y>361</y>
+     <x>842</x>
+     <y>357</y>
     </hint>
     <hint type="destinationlabel">
      <x>879</x>
