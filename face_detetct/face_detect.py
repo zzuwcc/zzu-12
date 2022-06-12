@@ -9,8 +9,7 @@ from PIL import Image, ImageTk
 system_state_lock = 0 # 标志系统状态的量 0表示无子线程在运行 1表示正在刷脸 2表示正在录入新面孔。
 # 相当于mutex锁，用于线程同步
 
-
-pth = "D:\dnn\\rm\experiment_ai\\"
+pth = "H:\email_classifier\zzu-12\\face_detetct\\"
 pth_xml = "D:\\anaconda\Lib\site-packages\cv2\data\\"
 
 class detect:
@@ -73,7 +72,7 @@ class detect:
         print("正在从摄像头录入新人脸信息 \n")
 
         # 存在目录data就清空，不存在就创建，确保最后存在空的data目录
-        filepath = "data"
+        filepath = pth+"data"
         if not os.path.exists(filepath):
             os.mkdir(filepath)
         else:
@@ -104,7 +103,7 @@ class detect:
                 sample_num += 1
                 # 保存图像，把灰度图片看成二维数组来检测人脸区域，这里是保存在data缓冲文件夹内
                 T = self.Total_face_num
-                cv2.imwrite("./data/User." + str(T) + '.' + str(sample_num) + '.jpg', gray[y:y + h, x:x + w])
+                cv2.imwrite(pth+"data/User." + str(T) + '.' + str(sample_num) + '.jpg', gray[y:y + h, x:x + w])
 
             pictur_num = 30  # 表示摄像头拍摄取样的数量,越多效果越好，但获取以及训练的越慢
 
@@ -137,7 +136,7 @@ class detect:
         recog.train(faces, np.array(ids))
         # 保存模型
 
-        yml = str(self.Total_face_num) + ".yml"  # yml = str(Total_face_num) + ".yml" 
+        yml ='face_cache/'+ str(self.Total_face_num) + ".yml"  # yml = str(Total_face_num) + ".yml" 
         rec_f = open(yml, "w+")
         rec_f.close()
         recog.save(yml)
@@ -200,7 +199,8 @@ class detect:
         # 使用之前训练好的模型
         for i in range(self.Total_face_num):  # 每个识别器都要用
             i += 1
-            yml = str(i) + ".yml"   # yml = str(i) + ".yml"
+            
+            yml = pth+'face_cache/'+str(i) + ".yml"   # yml = str(i) + ".yml"
             print("\n本次:" + yml)  # 调试信息
             self.recognizer.read(yml)
 
