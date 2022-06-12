@@ -15,9 +15,6 @@ import window.modify
 
 
 class Ui_Main(object):
-    def __init__(self):
-        self.good = []
-        self.bad = []
 
     def setupUi(self, Main):
         Main.setObjectName("Main")
@@ -225,3 +222,6 @@ class Ui_Main(object):
     def classifyEmail(self, path):
         pass
 
+    # 垃圾邮件移动到收件箱中  path是垃圾邮件的路径，即把垃圾邮件存放到 ./file/email/用户id/normalEmail 目录下
+    def movEmail(self, path):
+        pass
