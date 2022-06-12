@@ -9,12 +9,15 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from window import modify
+
+import window.entryUser
+import window.modify
+
 
 class Ui_Main(object):
-    def __init(self):
-        self.id=None
-        self.d=None
+    def __init__(self):
+        self.good = []
+        self.bad = []
 
     def setupUi(self, Main):
         Main.setObjectName("Main")
@@ -23,62 +26,62 @@ class Ui_Main(object):
         self.label.setGeometry(QtCore.QRect(60, 20, 91, 81))
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(Main)
-        self.label_2.setGeometry(QtCore.QRect(170, 20, 671, 81))
+        self.label_2.setGeometry(QtCore.QRect(170, 20, 461, 81))
         self.label_2.setText("")
         self.label_2.setObjectName("label_2")
         self.pushButton = QtWidgets.QPushButton(Main)
         self.pushButton.setGeometry(QtCore.QRect(840, 20, 141, 81))
         self.pushButton.setStyleSheet("QPushButton{\n"
-"       text-decoration:none;  \n"
-"    background:#05B8CC;\n"
-"    color:#f2f2f2;    \n"
-"    font-size:20px;  \n"
-"    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  \n"
-"    font-weight:bold; \n"
-"    border-radius:3px;\n"
-"}\n"
-"QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
+                                      "       text-decoration:none;  \n"
+                                      "    background:#05B8CC;\n"
+                                      "    color:#f2f2f2;    \n"
+                                      "    font-size:20px;  \n"
+                                      "    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  \n"
+                                      "    font-weight:bold; \n"
+                                      "    border-radius:3px;\n"
+                                      "}\n"
+                                      "QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
         self.pushButton.setCheckable(False)
         self.pushButton.setAutoExclusive(False)
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(Main)
         self.pushButton_2.setGeometry(QtCore.QRect(50, 130, 93, 61))
         self.pushButton_2.setStyleSheet("QPushButton{\n"
-"       text-decoration:none;  \n"
-"    background:#05B8CC;\n"
-"    color:#f2f2f2;    \n"
-"    font-size:20px;  \n"
-"    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  \n"
-"    font-weight:bold; \n"
-"    border-radius:3px;\n"
-"}\n"
-"QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
+                                        "       text-decoration:none;  \n"
+                                        "    background:#05B8CC;\n"
+                                        "    color:#f2f2f2;    \n"
+                                        "    font-size:20px;  \n"
+                                        "    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  \n"
+                                        "    font-weight:bold; \n"
+                                        "    border-radius:3px;\n"
+                                        "}\n"
+                                        "QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(Main)
         self.pushButton_3.setGeometry(QtCore.QRect(50, 220, 93, 61))
         self.pushButton_3.setStyleSheet("QPushButton{\n"
-"       text-decoration:none;  \n"
-"    background:#05B8CC;\n"
-"    color:#f2f2f2;    \n"
-"    font-size:20px;  \n"
-"    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  \n"
-"    font-weight:bold; \n"
-"    border-radius:3px;\n"
-"}\n"
-"QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
+                                        "       text-decoration:none;  \n"
+                                        "    background:#05B8CC;\n"
+                                        "    color:#f2f2f2;    \n"
+                                        "    font-size:20px;  \n"
+                                        "    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  \n"
+                                        "    font-weight:bold; \n"
+                                        "    border-radius:3px;\n"
+                                        "}\n"
+                                        "QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_4 = QtWidgets.QPushButton(Main)
         self.pushButton_4.setGeometry(QtCore.QRect(50, 310, 93, 51))
         self.pushButton_4.setStyleSheet("QPushButton{\n"
-"       text-decoration:none;  \n"
-"    background:#05B8CC;\n"
-"    color:#f2f2f2;    \n"
-"    font-size:20px;  \n"
-"    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  \n"
-"    font-weight:bold; \n"
-"    border-radius:3px;\n"
-"}\n"
-"QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
+                                        "       text-decoration:none;  \n"
+                                        "    background:#05B8CC;\n"
+                                        "    color:#f2f2f2;    \n"
+                                        "    font-size:20px;  \n"
+                                        "    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  \n"
+                                        "    font-weight:bold; \n"
+                                        "    border-radius:3px;\n"
+                                        "}\n"
+                                        "QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
         self.pushButton_4.setObjectName("pushButton_4")
         self.verticalLayoutWidget = QtWidgets.QWidget(Main)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(170, 130, 811, 551))
@@ -131,14 +134,29 @@ class Ui_Main(object):
         self.textBrowser.setObjectName("textBrowser")
         self.stackedWidget.addWidget(self.page_2)
         self.verticalLayout.addWidget(self.stackedWidget)
+        self.pushButton_5 = QtWidgets.QPushButton(Main)
+        self.pushButton_5.setGeometry(QtCore.QRect(670, 20, 151, 81))
+        self.pushButton_5.setStyleSheet("QPushButton{\n"
+                                        "       text-decoration:none;  \n"
+                                        "    background:#05B8CC;\n"
+                                        "    color:#f2f2f2;    \n"
+                                        "    font-size:20px;  \n"
+                                        "    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  \n"
+                                        "    font-weight:bold; \n"
+                                        "    border-radius:3px;\n"
+                                        "}\n"
+                                        "QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
+        self.pushButton_5.setObjectName("pushButton_5")
 
-        face = QtGui.QPixmap("./picture/face.png")
+        face = QtGui.QPixmap("./personal/face.png")
         self.label.setPixmap(face)  # 显示图片需要把Qlabel上的文字去掉
+        self.label_2.setText("当前用户: " + window.id)
         Main.setStyleSheet("background-color: white")
         Main.PB1 = self.PB1
         Main.pB2 = self.PB2
         Main.pB3 = self.PB3
         Main.pB4 = self.PB4
+        Main.pB5 = self.PB5
 
         self.retranslateUi(Main)
         self.stackedWidget.setCurrentIndex(0)
@@ -146,12 +164,13 @@ class Ui_Main(object):
         self.pushButton_3.clicked.connect(Main.pB3)
         self.pushButton_4.clicked.connect(Main.pB4)
         self.pushButton.clicked.connect(Main.PB1)
+        self.pushButton_5.clicked.connect(Main.pB5)
         QtCore.QMetaObject.connectSlotsByName(Main)
 
     def retranslateUi(self, Main):
         _translate = QtCore.QCoreApplication.translate
         Main.setWindowTitle(_translate("Main", "Form"))
-       # self.label.setText(_translate("Main", "TextLabel"))
+        #    self.label.setText(_translate("Main", "TextLabel"))
         self.pushButton.setText(_translate("Main", "修改个人资料"))
         self.pushButton_2.setText(_translate("Main", "收件箱"))
         self.pushButton_3.setText(_translate("Main", "垃圾箱"))
@@ -159,29 +178,50 @@ class Ui_Main(object):
         self.label_3.setText(_translate("Main", "收件人"))
         self.label_4.setText(_translate("Main", "发件昵称"))
         self.label_5.setText(_translate("Main", "邮件主题"))
+        self.pushButton_5.setText(_translate("Main", "录入人脸信息"))
 
     # 修改个人信息槽函数
     def PB1(self):
-        self.d = QtWidgets.QDialog()
-        d_ui = modify.Ui_Dialog()
-        d_ui.setupUi(self.d)
-        self.d.show()
+        self.dialog = QtWidgets.QDialog()
+        d_ui = window.modify.Ui_Dialog()
+        d_ui.setupUi(self.dialog)
+        self.dialog.show()
 
     # 收件箱槽函数
     def PB2(self):
+        self.stackedWidget.setCurrentIndex(0)
         # 加载前先删除上一次列出的数据
         count = self.listWidget.count()
         for i in range(count):
             item = self.listWidget.takeItem(0)
             self.listWidget.removeItemWidget(item)
-        text=["item1", "item2", "item3"]
+        text = ["item1", "item2", "item3"]
         self.listWidget.addItems(text)
-
 
     # 垃圾箱槽函数
     def PB3(self):
-        pass
+        self.stackedWidget.setCurrentIndex(0)
 
     # 写邮件槽函数
     def PB4(self):
+        self.stackedWidget.setCurrentIndex(2)
+
+    # 录入人脸信息槽函数
+    def PB5(self):
+        self.dialog = QtWidgets.QDialog()
+        d_ui = window.entryUser.Ui_Dialog()
+        d_ui.setupUi(self.dialog)
+        self.dialog.show()
+
+    # 爬取邮件的槽函数，并存放到 ./file/email/用户id 目录下
+    def getEmail(self, id, password):
         pass
+
+    # 垃圾邮件识别 path是待识别文件的路径 返回-1代表是垃圾邮件，返回1代表是正常邮件
+    def judgeEmail(self, path):
+        pass
+
+    # 垃圾分类  path是爬取的邮件的路径，把垃圾邮件存放到 ./file/email/用户id/spamEmail 目录下，把非垃圾邮件存放到./file/email/用户id/normalEmail 目录下
+    def classifyEmail(self, path):
+        pass
+

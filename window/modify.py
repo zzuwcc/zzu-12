@@ -10,16 +10,16 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import window
+from core.database import *
+
 
 class Ui_Dialog(object):
-    def __init__(self):
-        self.Dialog = None
-
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(823, 509)
         self.formLayoutWidget = QtWidgets.QWidget(Dialog)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(160, 20, 531, 381))
+        self.formLayoutWidget.setGeometry(QtCore.QRect(160, 20, 531, 121))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout = QtWidgets.QFormLayout(self.formLayoutWidget)
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -51,10 +51,18 @@ class Ui_Dialog(object):
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(370, 440, 93, 28))
         self.pushButton.setObjectName("pushButton")
+        self.label_5 = QtWidgets.QLabel(Dialog)
+        self.label_5.setGeometry(QtCore.QRect(160, 150, 531, 251))
+        #  self.label_5.setText("")
+        self.label_5.setObjectName("label_5")
 
         self.Dialog = Dialog
         Dialog.pB = self.pb
         Dialog.pB2 = self.pb2
+        information = getInformation()
+        self.lineEdit.setText(information[1])
+        self.lineEdit_2.setText(information[0])
+        self.lineEdit_3.setText(information[2])
 
         self.retranslateUi(Dialog)
         self.pushButton.clicked.connect(Dialog.pB)
@@ -75,4 +83,14 @@ class Ui_Dialog(object):
         self.Dialog.close()
 
     def pb2(self):
-        filename = QtWidgets.QFileDialog.getOpenFileName()
+        result = QtWidgets.QFileDialog.getOpenFileName()
+        print(result)
+        print(result[0])
+        picture = QtGui.QPixmap(result[0])
+        print(picture.isNull())
+        self.label_5.setStyleSheet("background-color: red")
+        self.label_5.setPixmap(picture)
+        file = open(result[0], 'r')
+        data = file.read()
+        print(len(data))
+        setHead(data)

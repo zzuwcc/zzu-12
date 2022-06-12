@@ -37,7 +37,7 @@ class Ui_Form(object):
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.stackedWidget = QtWidgets.QStackedWidget(Form)
-        self.stackedWidget.setGeometry(QtCore.QRect(590, 140, 411, 341))
+        self.stackedWidget.setGeometry(QtCore.QRect(580, 140, 411, 341))
         self.stackedWidget.setObjectName("stackedWidget")
         self.page = QtWidgets.QWidget()
         self.page.setObjectName("page")
@@ -74,39 +74,27 @@ class Ui_Form(object):
         self.label_3 = QtWidgets.QLabel(self.page_2)
         self.label_3.setGeometry(QtCore.QRect(10, 70, 321, 271))
         self.label_3.setObjectName("label_3")
-        self.pushButton_6 = QtWidgets.QPushButton(self.page_2)
-        self.pushButton_6.setGeometry(QtCore.QRect(0, 10, 93, 28))
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.pushButton_9 = QtWidgets.QPushButton(self.page_2)
-        self.pushButton_9.setGeometry(QtCore.QRect(100, 10, 93, 28))
-        self.pushButton_9.setObjectName("pushButton_9")
         self.stackedWidget.addWidget(self.page_2)
         self.page_4 = QtWidgets.QWidget()
         self.page_4.setObjectName("page_4")
         self.formLayoutWidget_2 = QtWidgets.QWidget(self.page_4)
-        self.formLayoutWidget_2.setGeometry(QtCore.QRect(10, 30, 291, 88))
+        self.formLayoutWidget_2.setGeometry(QtCore.QRect(10, 80, 291, 61))
         self.formLayoutWidget_2.setObjectName("formLayoutWidget_2")
         self.formLayout_2 = QtWidgets.QFormLayout(self.formLayoutWidget_2)
         self.formLayout_2.setContentsMargins(0, 0, 0, 0)
         self.formLayout_2.setObjectName("formLayout_2")
-        self.label_4 = QtWidgets.QLabel(self.formLayoutWidget_2)
-        self.label_4.setObjectName("label_4")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_4)
-        self.lineEdit = QtWidgets.QLineEdit(self.formLayoutWidget_2)
-        self.lineEdit.setObjectName("lineEdit")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit)
         self.label_6 = QtWidgets.QLabel(self.formLayoutWidget_2)
         self.label_6.setObjectName("label_6")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_6)
-        self.label_5 = QtWidgets.QLabel(self.formLayoutWidget_2)
-        self.label_5.setObjectName("label_5")
-        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_5)
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.formLayoutWidget_2)
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_6)
         self.lineEdit_3 = QtWidgets.QLineEdit(self.formLayoutWidget_2)
         self.lineEdit_3.setObjectName("lineEdit_3")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
+        self.label_5 = QtWidgets.QLabel(self.formLayoutWidget_2)
+        self.label_5.setObjectName("label_5")
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_5)
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.formLayoutWidget_2)
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
         self.pushButton_7 = QtWidgets.QPushButton(self.page_4)
         self.pushButton_7.setGeometry(QtCore.QRect(10, 190, 93, 28))
         self.pushButton_7.setObjectName("pushButton_7")
@@ -120,12 +108,14 @@ class Ui_Form(object):
 
         import os
         if os.path.exists('./personal/individual.txt'):
+            self.radioButton.setChecked(True)
             file = open('./personal/individual.txt', 'r')
             id = file.readline()[:-1]
             password = file.readline()
             self.lineEdit_4.setText(id)
             self.lineEdit_5.setText(password)
 
+        self.Form = Form
         Form.setFixedSize(1020, 581)
         Form.setWindowTitle("垃圾邮件过滤系统")
         Form.setWindowIcon(QtGui.QIcon("./picture/icon.png"))
@@ -137,10 +127,8 @@ class Ui_Form(object):
         Form.register = self.register
         Form.pb4 = self.pushButton4
         Form.pb5 = self.pushButton5
-        Form.pb6 = self.pushButton6
         Form.pb7 = self.pushButton7
         Form.pb8 = self.pushButton8
-        Form.pb9 = self.pushButton9
         pixmap = QtGui.QPixmap("./picture/log.png")
         self.label.setPixmap(pixmap)
         self.label_3.setStyleSheet("background-color: #000000")
@@ -151,12 +139,8 @@ class Ui_Form(object):
         self.pushButton.clicked.connect(Form.password)
         self.pushButton_4.clicked.connect(Form.pb4)
         self.pushButton_5.clicked.connect(Form.pb5)
-        self.pushButton_6.clicked.connect(Form.pb6)
         self.pushButton_7.clicked.connect(Form.pb7)
         self.pushButton_8.clicked.connect(Form.pb8)
-        self.pushButton_9.clicked.connect(Form.pb9)
-
-        print("hello")
 
         self.retranslateUi(Form)
         self.stackedWidget.setCurrentIndex(0)
@@ -167,13 +151,11 @@ class Ui_Form(object):
         self.pushButton_5.clicked.connect(Form.pb5)
         self.pushButton_7.clicked.connect(Form.pb7)
         self.pushButton_8.clicked.connect(Form.pb8)
-        self.pushButton_6.clicked.connect(Form.pb6)
-        self.pushButton_9.clicked.connect(Form.pb9)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+      #  Form.setWindowTitle(_translate("Form", "Form"))
         self.pushButton.setText(_translate("Form", "密码登录"))
         self.pushButton_2.setText(_translate("Form", "人脸识别登录"))
         self.pushButton_3.setText(_translate("Form", "注册"))
@@ -183,43 +165,40 @@ class Ui_Form(object):
         self.label_2.setText(_translate("Form", "用户ID"))
         self.label_7.setText(_translate("Form", "密码"))
         self.label_3.setText(_translate("Form", "摄像头捕获的数据"))
-        self.pushButton_6.setText(_translate("Form", "开始识别"))
-        self.pushButton_9.setText(_translate("Form", "录入新用户"))
-        self.label_4.setText(_translate("Form", "用户名"))
         self.label_6.setText(_translate("Form", "用户ID"))
         self.label_5.setText(_translate("Form", "密码"))
         self.pushButton_7.setText(_translate("Form", "注册"))
         self.pushButton_8.setText(_translate("Form", "清空"))
      #   self.label.setText(_translate("Form", "TextLabel"))
 
-    # 登录注册按钮
+    # 人脸识别方式登录接口  self.label_3变量是用来显示摄像头捕获的数据
     def face(self):
         self.pushButton_2.setStyleSheet('background-color: #83c0f4')
         self.pushButton.setStyleSheet('background-color: white')
         self.pushButton_3.setStyleSheet('background-color: white')
         self.stackedWidget.setCurrentIndex(1)
 
-        # 清空按钮的响应事件
-
+    # 清空按钮的响应事件
     def pushButton8(self):
         self.lineEdit.setText("")
         self.lineEdit_2.setText("")
         self.lineEdit_3.setText("")
 
+    # 密码登录方式
     def password(self):
         self.pushButton.setStyleSheet('background-color: #83c0f4')
         self.pushButton_2.setStyleSheet('background-color: white')
         self.pushButton_3.setStyleSheet('background-color: white')
         self.stackedWidget.setCurrentIndex(0)
 
+    # 注册按钮
     def register(self):
         self.pushButton_3.setStyleSheet('background-color: #83c0f4')
         self.pushButton.setStyleSheet('background-color: white')
         self.pushButton_2.setStyleSheet('background-color: white')
         self.stackedWidget.setCurrentIndex(2)
 
-        # 登录按钮的响应事件
-
+    # 登录按钮的响应事件
     def pushButton4(self):
         id = self.lineEdit_4.text()
         password = self.lineEdit_5.text()
@@ -231,6 +210,7 @@ class Ui_Form(object):
             d_ui.label.setText("登录失败!")
             d.show()
         else:
+            window.id = id
             if self.radioButton.isChecked():
                 file = open("./personal/individual.txt", 'w')
                 file.write(self.lineEdit_4.text())
@@ -244,14 +224,12 @@ class Ui_Form(object):
             self.w.show()
             self.Form.close()
 
-        # 清空按钮的响应事件
-
+    # 清空按钮的响应事件
     def pushButton5(self):
         self.lineEdit_4.setText("")
         self.lineEdit_5.setText("")
 
-        # 注册按钮的响应事件
-
+    # 注册按钮的响应事件
     def pushButton7(self):
         name = self.lineEdit.text()
         id = self.lineEdit_3.text()
@@ -269,9 +247,3 @@ class Ui_Form(object):
             d_ui.setupUi(d)
             d_ui.label.setText("注册成功!")
             d.show()
-
-    def pushButton6(self):
-        pass
-
-    def pushButton9(self):
-        pass
