@@ -226,15 +226,17 @@ class Ui_Main(object):
     # 发送邮件的接口
     # window.id: 发送者邮箱
     # window.password: 发送者邮箱密码
-    # self.lineEdit(): 接收者邮箱
-    # self.lineEdit_2(): 发送者昵称
-    # self.lineEdit_3(): 邮件主题
+    # self.lineEdit.text(): 接收者邮箱
+    # self.lineEdit_2.text(): 发送者昵称
+    # self.lineEdit_3.text(): 邮件主题
+    # self.plainTextEdit.toPalinText(): 发送内容
     def PB6(self):
         pass
 
     # 爬取邮件的槽函数，并存放到 ./file/email/用户id 目录下
-    def getEmail(self, id, password):
-        
+    # window.id: 发送者邮箱
+    # window.password: 发送者邮箱密码
+    def getEmail(self):
         pass
 
     # 垃圾邮件识别 path是待识别文件的路径 返回-1代表是垃圾邮件，返回1代表是正常邮件
