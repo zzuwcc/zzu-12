@@ -232,7 +232,17 @@ class Ui_Main(object):
     # self.lineEdit_3.text(): 邮件主题
     # self.plainTextEdit.toPalinText(): 发送内容
     def PB6(self):
-        pass
+        msg = MIMEText(self.plainTextEdit.toPalinText(), 'plain', 'utf-8')
+        msg["From"] = formataddr([self.lineEdit_2.text(), window.id])
+        msg["To"] = self.lineEdit.text()
+
+        msg['Subject'] = Header(self.lineEdit_3.text(), 'utf-8')
+        # 发送邮件
+        server = smtplib.SMTP_SSL("smtp.qq.com")
+        server.login(window.id, window.password)
+        server.sendmail(window.id, self.lineEdit.text(), msg.as_string())
+        server.quit()
+        
 
     # 爬取邮件的槽函数，并存放到 ./file/email/用户id 目录下
     # window.id: 发送者邮箱
