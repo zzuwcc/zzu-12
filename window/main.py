@@ -165,6 +165,7 @@ class Ui_Main(object):
         Main.pB5 = self.PB5
         Main.pB6 = self.PB6
 
+
         self.retranslateUi(Main)
         self.stackedWidget.setCurrentIndex(0)
         self.pushButton_2.clicked.connect(Main.pB2)
