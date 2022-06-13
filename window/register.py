@@ -9,6 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+import window
 from core.database import *
 from window.main import *
 from window.dialog import *
@@ -205,6 +207,7 @@ class Ui_Form(object):
             d.show()
         else:
             window.id = id
+            window.password = password
             if self.radioButton.isChecked():
                 file = open("./personal/individual.txt", 'w')
                 file.write(self.lineEdit_4.text())

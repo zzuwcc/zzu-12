@@ -14,6 +14,7 @@ import window
 from window import modify
 from window import entryUser
 
+
 class Ui_Main(object):
     def setupUi(self, Main):
         Main.setObjectName("Main")
@@ -124,6 +125,9 @@ class Ui_Main(object):
         self.lineEdit_3 = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
+        self.pushButton_6 = QtWidgets.QPushButton(self.page_3)
+        self.pushButton_6.setGeometry(QtCore.QRect(680, 60, 93, 28))
+        self.pushButton_6.setObjectName("pushButton_6")
         self.stackedWidget.addWidget(self.page_3)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -155,20 +159,22 @@ class Ui_Main(object):
         Main.pB3 = self.PB3
         Main.pB4 = self.PB4
         Main.pB5 = self.PB5
+        Main.pB6 = self.PB6
 
         self.retranslateUi(Main)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.pushButton_2.clicked.connect(Main.pB2)
         self.pushButton_3.clicked.connect(Main.pB3)
         self.pushButton_4.clicked.connect(Main.pB4)
         self.pushButton.clicked.connect(Main.PB1)
         self.pushButton_5.clicked.connect(Main.pB5)
+        self.pushButton_6.clicked.connect(Main.pB6)
         QtCore.QMetaObject.connectSlotsByName(Main)
 
     def retranslateUi(self, Main):
         _translate = QtCore.QCoreApplication.translate
         Main.setWindowTitle(_translate("Main", "Form"))
-   #     self.label.setText(_translate("Main", "TextLabel"))
+        self.label.setText(_translate("Main", "TextLabel"))
         self.pushButton.setText(_translate("Main", "修改个人资料"))
         self.pushButton_2.setText(_translate("Main", "收件箱"))
         self.pushButton_3.setText(_translate("Main", "垃圾箱"))
@@ -176,14 +182,15 @@ class Ui_Main(object):
         self.label_3.setText(_translate("Main", "收件人"))
         self.label_4.setText(_translate("Main", "发件昵称"))
         self.label_5.setText(_translate("Main", "邮件主题"))
+        self.pushButton_6.setText(_translate("Main", "发送"))
         self.pushButton_5.setText(_translate("Main", "录入人脸信息"))
 
     # 修改个人信息槽函数
     def PB1(self):
         self.dialog = QtWidgets.QDialog()
-        self.dialog.father=self
-        d_ui = window.modify.Ui_Dialog()
+        d_ui = modify.Ui_Dialog()
         d_ui.setupUi(self.dialog)
+        self.dialog.father = self
         self.dialog.show()
 
     # 收件箱槽函数
@@ -203,14 +210,23 @@ class Ui_Main(object):
 
     # 写邮件槽函数
     def PB4(self):
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(1)
 
     # 录入人脸信息槽函数
     def PB5(self):
         self.dialog = QtWidgets.QDialog()
-        d_ui = window.entryUser.Ui_Dialog()
+        d_ui = entryUser.Ui_Dialog()
         d_ui.setupUi(self.dialog)
         self.dialog.show()
+
+    # 发送邮件的接口
+    # window.id: 发送者邮箱
+    # window.password: 发送者邮箱密码
+    # self.lineEdit(): 接收者邮箱
+    # self.lineEdit_2(): 发送者昵称
+    # self.lineEdit_3(): 邮件主题
+    def PB6(self):
+        pass
 
     # 爬取邮件的槽函数，并存放到 ./file/email/用户id 目录下
     def getEmail(self, id, password):

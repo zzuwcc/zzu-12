@@ -164,7 +164,7 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page">
        <widget class="QListWidget" name="listWidget">
@@ -230,6 +230,19 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
           <widget class="QLineEdit" name="lineEdit_3"/>
          </item>
         </layout>
+       </widget>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>60</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>发送</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="page_2">
@@ -356,6 +369,22 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>Main</receiver>
+   <slot>pB6()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>896</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1038</x>
+     <y>316</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>pB2()</slot>
@@ -363,5 +392,6 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
   <slot>pB4()</slot>
   <slot>PB1()</slot>
   <slot>pB5()</slot>
+  <slot>pB6()</slot>
  </slots>
 </ui>
