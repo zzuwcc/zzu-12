@@ -14,6 +14,11 @@ import window
 from window import modify
 from window import entryUser
 
+import smtplib
+from email.mime.text import MIMEText
+from email.utils
+from email.header import Header
+
 
 class Ui_Main(object):
     def setupUi(self, Main):
@@ -230,6 +235,7 @@ class Ui_Main(object):
 
     # 爬取邮件的槽函数，并存放到 ./file/email/用户id 目录下
     def getEmail(self, id, password):
+        
         pass
 
     # 垃圾邮件识别 path是待识别文件的路径 返回-1代表是垃圾邮件，返回1代表是正常邮件
