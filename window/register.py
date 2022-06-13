@@ -135,7 +135,6 @@ class Ui_Form(object):
             password = file.readline()
             self.lineEdit_4.setText(id)
             self.lineEdit_5.setText(password)
-
         self.Form = Form
         Form.setFixedSize(1020, 581)
         Form.face = self.face
