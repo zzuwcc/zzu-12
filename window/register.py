@@ -13,30 +13,11 @@ from core.database import *
 from window.main import *
 from window.dialog import *
 
-
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.setEnabled(True)
         Form.resize(1020, 581)
-        self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(590, 80, 451, 31))
-        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.pushButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
-        self.pushButton_2 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout.addWidget(self.pushButton_2)
-        self.pushButton_3 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
-        self.pushButton_3.setStyleSheet("")
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.horizontalLayout.addWidget(self.pushButton_3)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
         self.stackedWidget = QtWidgets.QStackedWidget(Form)
         self.stackedWidget.setGeometry(QtCore.QRect(580, 140, 411, 341))
         self.stackedWidget.setObjectName("stackedWidget")
@@ -98,17 +79,32 @@ class Ui_Form(object):
         self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
-        self.pushButton_7 = QtWidgets.QPushButton(self.page_4)
-        self.pushButton_7.setGeometry(QtCore.QRect(10, 190, 93, 28))
-        self.pushButton_7.setObjectName("pushButton_7")
         self.pushButton_8 = QtWidgets.QPushButton(self.page_4)
         self.pushButton_8.setGeometry(QtCore.QRect(210, 190, 93, 28))
         self.pushButton_8.setObjectName("pushButton_8")
+        self.pushButton_6 = QtWidgets.QPushButton(self.page_4)
+        self.pushButton_6.setGeometry(QtCore.QRect(10, 190, 93, 28))
+        self.pushButton_6.setObjectName("pushButton_6")
         self.stackedWidget.addWidget(self.page_4)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(20, 90, 501, 401))
         self.label.setObjectName("label")
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(590, 70, 91, 28))
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(Form)
+        self.pushButton_2.setGeometry(QtCore.QRect(700, 70, 111, 29))
+        self.pushButton_2.setStyleSheet("QPushButton{    \n"
+"    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  ;\n"
+"}\n"
+"QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_3 = QtWidgets.QPushButton(Form)
+        self.pushButton_3.setGeometry(QtCore.QRect(830, 70, 81, 29))
+        self.pushButton_3.setStyleSheet("")
+        self.pushButton_3.setObjectName("pushButton_3")
 
+        self.pushButton.setStyleSheet('background-color: #83c0f4')
         import os
         if os.path.exists('./personal/individual.txt'):
             self.radioButton.setChecked(True)
@@ -143,7 +139,7 @@ class Ui_Form(object):
         self.pushButton_3.clicked.connect(Form.register)
         self.pushButton_4.clicked.connect(Form.pb4)
         self.pushButton_5.clicked.connect(Form.pb5)
-        self.pushButton_7.clicked.connect(Form.pb7)
+        self.pushButton_6.clicked.connect(Form.pb7)
         self.pushButton_8.clicked.connect(Form.pb8)
 
         self.retranslateUi(Form)
@@ -164,7 +160,7 @@ class Ui_Form(object):
         self.label_3.setText(_translate("Form", "摄像头捕获的数据"))
         self.label_6.setText(_translate("Form", "用户ID"))
         self.label_5.setText(_translate("Form", "密码"))
-        self.pushButton_7.setText(_translate("Form", "注册"))
+        self.pushButton_6.setText(_translate("Form", "注册"))
         self.pushButton_8.setText(_translate("Form", "清空"))
 
     #   self.label.setText(_translate("Form", "TextLabel"))
@@ -221,6 +217,7 @@ class Ui_Form(object):
             self.w_ui.label.show()
             self.w.show()
             self.Form.close()
+            window.main = self.w
 
     # 清空按钮的响应事件
     def pushButton5(self):

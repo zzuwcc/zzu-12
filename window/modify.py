@@ -10,58 +10,48 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-import window
+import window.main
 from core.database import *
-
+from window.main import *
 
 class Ui_Dialog(object):
+    def __int__(self):
+        self.father = None
+
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(823, 509)
         self.formLayoutWidget = QtWidgets.QWidget(Dialog)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(160, 20, 531, 121))
+        self.formLayoutWidget.setGeometry(QtCore.QRect(180, 80, 531, 61))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout = QtWidgets.QFormLayout(self.formLayoutWidget)
         self.formLayout.setContentsMargins(0, 0, 0, 0)
         self.formLayout.setObjectName("formLayout")
-        self.label = QtWidgets.QLabel(self.formLayoutWidget)
-        self.label.setObjectName("label")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
-        self.lineEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.lineEdit.setObjectName("lineEdit")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit)
-        self.label_2 = QtWidgets.QLabel(self.formLayoutWidget)
-        self.label_2.setObjectName("label_2")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_2)
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
         self.label_3 = QtWidgets.QLabel(self.formLayoutWidget)
         self.label_3.setObjectName("label_3")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_3)
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_3)
         self.lineEdit_3 = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_3.setObjectName("lineEdit_3")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
         self.label_4 = QtWidgets.QLabel(self.formLayoutWidget)
         self.label_4.setObjectName("label_4")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_4)
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_4)
         self.pushButton_2 = QtWidgets.QPushButton(self.formLayoutWidget)
         self.pushButton_2.setObjectName("pushButton_2")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.pushButton_2)
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.pushButton_2)
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(370, 440, 93, 28))
         self.pushButton.setObjectName("pushButton")
         self.label_5 = QtWidgets.QLabel(Dialog)
-        self.label_5.setGeometry(QtCore.QRect(160, 150, 531, 251))
-        #  self.label_5.setText("")
+        self.label_5.setGeometry(QtCore.QRect(390, 160, 311, 251))
+        self.label_5.setText("")
         self.label_5.setObjectName("label_5")
 
         self.Dialog = Dialog
         Dialog.pB = self.pb
         Dialog.pB2 = self.pb2
         information = getInformation()
-        self.lineEdit.setText(information[1])
-        self.lineEdit_2.setText(information[0])
         self.lineEdit_3.setText(information[2])
 
         self.retranslateUi(Dialog)
@@ -72,25 +62,24 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "用户名"))
-        self.label_2.setText(_translate("Dialog", "用户id"))
         self.label_3.setText(_translate("Dialog", "密码"))
         self.label_4.setText(_translate("Dialog", "头像"))
         self.pushButton_2.setText(_translate("Dialog", "选择"))
         self.pushButton.setText(_translate("Dialog", "确定"))
+
+    def __init__(self):
+        self.Dialog = None
 
     def pb(self):
         self.Dialog.close()
 
     def pb2(self):
         result = QtWidgets.QFileDialog.getOpenFileName()
-        print(result)
         print(result[0])
         picture = QtGui.QPixmap(result[0])
-        print(picture.isNull())
-        self.label_5.setStyleSheet("background-color: red")
         self.label_5.setPixmap(picture)
-        file = open(result[0], 'r')
-        data = file.read()
-        print(len(data))
-        setHead(data)
+        dst = open('./personal/face.png', "wb")
+        src = open(result[0], 'rb')
+        dst.write(src.read())
+        self.Dialog.father.label.setPixmap(picture)
+

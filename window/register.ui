@@ -16,55 +16,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="horizontalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>590</x>
-     <y>80</y>
-     <width>451</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>密码登录</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="text">
-       <string>人脸识别登录</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>注册</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-   </layout>
-  </widget>
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
@@ -206,19 +157,6 @@
       </item>
      </layout>
     </widget>
-    <widget class="QPushButton" name="pushButton_7">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>190</y>
-       <width>93</width>
-       <height>28</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>注册</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_8">
      <property name="geometry">
       <rect>
@@ -230,6 +168,19 @@
      </property>
      <property name="text">
       <string>清空</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>190</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>登录</string>
      </property>
     </widget>
    </widget>
@@ -247,57 +198,57 @@
     <string>TextLabel</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>70</y>
+     <width>91</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>密码登录</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>700</x>
+     <y>70</y>
+     <width>111</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{    
+    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  ;
+}
+QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }</string>
+   </property>
+   <property name="text">
+    <string>人脸识别登录</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>70</y>
+     <width>81</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>注册</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>
-  <connection>
-   <sender>pushButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>Form</receiver>
-   <slot>face()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>691</x>
-     <y>81</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-6</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Form</receiver>
-   <slot>password()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>591</x>
-     <y>81</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-10</x>
-     <y>148</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_3</sender>
-   <signal>clicked()</signal>
-   <receiver>Form</receiver>
-   <slot>register()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>797</x>
-     <y>81</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-5</x>
-     <y>124</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>pushButton_4</sender>
    <signal>clicked()</signal>
@@ -331,22 +282,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_7</sender>
-   <signal>clicked()</signal>
-   <receiver>Form</receiver>
-   <slot>pb7()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>635</x>
-     <y>357</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>644</x>
-     <y>600</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_8</sender>
    <signal>clicked()</signal>
    <receiver>Form</receiver>
@@ -359,6 +294,70 @@
     <hint type="destinationlabel">
      <x>879</x>
      <y>572</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>password()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>591</x>
+     <y>81</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-10</x>
+     <y>148</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>register()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>910</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-5</x>
+     <y>124</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>face()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>801</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-6</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>pb6()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>644</x>
+     <y>342</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>425</x>
+     <y>594</y>
     </hint>
    </hints>
   </connection>

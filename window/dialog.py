@@ -22,11 +22,6 @@ class Ui_Dialog(object):
         self.pushButton.setGeometry(QtCore.QRect(230, 240, 93, 28))
         self.pushButton.setObjectName("pushButton")
 
-        def guanbi():
-            Dialog.close()
-
-        Dialog.guanbi=guanbi
-
         self.retranslateUi(Dialog)
         self.pushButton.clicked.connect(Dialog.guanbi)
         QtCore.QMetaObject.connectSlotsByName(Dialog)

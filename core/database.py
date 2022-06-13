@@ -64,10 +64,4 @@ def getHead():
 
 # 设置头像
 def setHead(head):
-    sql = "insert into user (head) values ('{}')".format(head)
-    cursor.execute(sql)
-    result = cursor.fetchall()
-    if result == ():
-        return -1
-    else:
-        return 1
+    pass
