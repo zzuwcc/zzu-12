@@ -14,6 +14,10 @@ import window
 from window import modify
 from window import entryUser
 
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+
 
 class Ui_Main(object):
     def setupUi(self, Main):
@@ -162,7 +166,7 @@ class Ui_Main(object):
         Main.pB6 = self.PB6
 
         self.retranslateUi(Main)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         self.pushButton_2.clicked.connect(Main.pB2)
         self.pushButton_3.clicked.connect(Main.pB3)
         self.pushButton_4.clicked.connect(Main.pB4)
@@ -222,15 +226,15 @@ class Ui_Main(object):
     # 发送邮件的接口
     # window.id: 发送者邮箱
     # window.password: 发送者邮箱密码
-    # self.lineEdit.text(): 接收者邮箱
-    # self.lineEdit_2.text(): 发送者昵称
-    # self.lineEdit_3.text(): 邮件主题
-    # self.plainTextEdit.toPlainText(): 发送内容
+    # self.lineEdit(): 接收者邮箱
+    # self.lineEdit_2(): 发送者昵称
+    # self.lineEdit_3(): 邮件主题
     def PB6(self):
-        print(self.plainTextEdit.toPlainText())
+        pass
 
     # 爬取邮件的槽函数，并存放到 ./file/email/用户id 目录下
-    def getEmail(self):
+    def getEmail(self, id, password):
+        
         pass
 
     # 垃圾邮件识别 path是待识别文件的路径 返回-1代表是垃圾邮件，返回1代表是正常邮件
