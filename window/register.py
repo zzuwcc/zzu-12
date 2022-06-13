@@ -9,17 +9,18 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
-import window
 from core.database import *
 from window.main import *
 from window.dialog import *
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.setEnabled(True)
         Form.resize(1020, 581)
+        Form.setWindowTitle("")
+        Form.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.stackedWidget = QtWidgets.QStackedWidget(Form)
         self.stackedWidget.setGeometry(QtCore.QRect(580, 140, 411, 341))
         self.stackedWidget.setObjectName("stackedWidget")
@@ -27,9 +28,15 @@ class Ui_Form(object):
         self.page.setObjectName("page")
         self.pushButton_4 = QtWidgets.QPushButton(self.page)
         self.pushButton_4.setGeometry(QtCore.QRect(0, 170, 93, 28))
+        self.pushButton_4.setStyleSheet("QPushButton{\n"
+"border: 1px solid;\n"
+"}")
         self.pushButton_4.setObjectName("pushButton_4")
         self.pushButton_5 = QtWidgets.QPushButton(self.page)
         self.pushButton_5.setGeometry(QtCore.QRect(210, 170, 93, 28))
+        self.pushButton_5.setStyleSheet("QPushButton{\n"
+"border: 1px solid;\n"
+"}")
         self.pushButton_5.setObjectName("pushButton_5")
         self.radioButton = QtWidgets.QRadioButton(self.page)
         self.radioButton.setGeometry(QtCore.QRect(0, 130, 141, 19))
@@ -58,6 +65,7 @@ class Ui_Form(object):
         self.page_2.setObjectName("page_2")
         self.label_3 = QtWidgets.QLabel(self.page_2)
         self.label_3.setGeometry(QtCore.QRect(10, 70, 321, 271))
+        self.label_3.setText("")
         self.label_3.setObjectName("label_3")
         self.stackedWidget.addWidget(self.page_2)
         self.page_4 = QtWidgets.QWidget()
@@ -72,6 +80,7 @@ class Ui_Form(object):
         self.label_6.setObjectName("label_6")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_6)
         self.lineEdit_3 = QtWidgets.QLineEdit(self.formLayoutWidget_2)
+        self.lineEdit_3.setStyleSheet("")
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
         self.label_5 = QtWidgets.QLabel(self.formLayoutWidget_2)
@@ -83,30 +92,41 @@ class Ui_Form(object):
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
         self.pushButton_8 = QtWidgets.QPushButton(self.page_4)
         self.pushButton_8.setGeometry(QtCore.QRect(210, 190, 93, 28))
+        self.pushButton_8.setStyleSheet("QPushButton{\n"
+"border: 1px solid;\n"
+"}")
         self.pushButton_8.setObjectName("pushButton_8")
         self.pushButton_6 = QtWidgets.QPushButton(self.page_4)
         self.pushButton_6.setGeometry(QtCore.QRect(10, 190, 93, 28))
+        self.pushButton_6.setStyleSheet("QPushButton{\n"
+"border: 1px solid;\n"
+"}")
         self.pushButton_6.setObjectName("pushButton_6")
         self.stackedWidget.addWidget(self.page_4)
         self.label = QtWidgets.QLabel(Form)
         self.label.setGeometry(QtCore.QRect(20, 90, 501, 401))
+        self.label.setText("")
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(590, 70, 91, 28))
+        self.pushButton.setStyleSheet("QPushButton{\n"
+"background-color: rgb(85, 170, 255);\n"
+"border: 1px solid;\n"
+"}")
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(Form)
         self.pushButton_2.setGeometry(QtCore.QRect(700, 70, 111, 29))
-        self.pushButton_2.setStyleSheet("QPushButton{    \n"
-"    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  ;\n"
-"}\n"
-"QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }")
+        self.pushButton_2.setStyleSheet("QPushButton{\n"
+"border: 1px solid;\n"
+"}")
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(Form)
         self.pushButton_3.setGeometry(QtCore.QRect(830, 70, 81, 29))
-        self.pushButton_3.setStyleSheet("")
+        self.pushButton_3.setStyleSheet("QPushButton{\n"
+"border: 1px solid;\n"
+"}")
         self.pushButton_3.setObjectName("pushButton_3")
 
-        self.pushButton.setStyleSheet('background-color: #83c0f4')
         import os
         if os.path.exists('./personal/individual.txt'):
             self.radioButton.setChecked(True)
@@ -118,11 +138,6 @@ class Ui_Form(object):
 
         self.Form = Form
         Form.setFixedSize(1020, 581)
-        Form.setWindowTitle("垃圾邮件过滤系统")
-        Form.setWindowIcon(QtGui.QIcon("./picture/icon.png"))
-        Form.setStyleSheet('background-color: white')
-        import ctypes
-        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("myappid")
         Form.face = self.face
         Form.password = self.password
         Form.register = self.register
@@ -141,7 +156,6 @@ class Ui_Form(object):
         self.pushButton_3.clicked.connect(Form.register)
         self.pushButton_4.clicked.connect(Form.pb4)
         self.pushButton_5.clicked.connect(Form.pb5)
-        self.pushButton_6.clicked.connect(Form.pb7)
         self.pushButton_8.clicked.connect(Form.pb8)
 
         self.retranslateUi(Form)
@@ -150,49 +164,44 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        #  Form.setWindowTitle(_translate("Form", "Form"))
-        self.pushButton.setText(_translate("Form", "密码登录"))
-        self.pushButton_2.setText(_translate("Form", "人脸识别登录"))
-        self.pushButton_3.setText(_translate("Form", "注册"))
         self.pushButton_4.setText(_translate("Form", "登录"))
         self.pushButton_5.setText(_translate("Form", "清空"))
         self.radioButton.setText(_translate("Form", "记住用户和密码"))
         self.label_2.setText(_translate("Form", "用户ID"))
         self.label_7.setText(_translate("Form", "密码"))
-        self.label_3.setText(_translate("Form", "摄像头捕获的数据"))
         self.label_6.setText(_translate("Form", "用户ID"))
         self.label_5.setText(_translate("Form", "密码"))
-        self.pushButton_6.setText(_translate("Form", "注册"))
         self.pushButton_8.setText(_translate("Form", "清空"))
-
-    #   self.label.setText(_translate("Form", "TextLabel"))
+        self.pushButton_6.setText(_translate("Form", "登录"))
+        self.pushButton.setText(_translate("Form", "密码登录"))
+        self.pushButton_2.setText(_translate("Form", "人脸识别登录"))
+        self.pushButton_3.setText(_translate("Form", "注册"))
 
     # 人脸识别方式登录接口  self.label_3变量是用来显示摄像头捕获的数据
     def face(self):
-        self.pushButton_2.setStyleSheet('background-color: #83c0f4')
-        self.pushButton.setStyleSheet('background-color: white')
-        self.pushButton_3.setStyleSheet('background-color: white')
+        self.pushButton_2.setStyleSheet('background-color: rgb(85, 170, 255); border: 1px solid;')
+        self.pushButton.setStyleSheet('border: 1px solid;')
+        self.pushButton_3.setStyleSheet('border: 1px solid;')
         self.stackedWidget.setCurrentIndex(1)
-
-    # 清空按钮的响应事件
-    def pushButton8(self):
-        self.lineEdit.setText("")
-        self.lineEdit_2.setText("")
-        self.lineEdit_3.setText("")
 
     # 密码登录方式
     def password(self):
-        self.pushButton.setStyleSheet('background-color: #83c0f4')
-        self.pushButton_2.setStyleSheet('background-color: white')
-        self.pushButton_3.setStyleSheet('background-color: white')
+        self.pushButton.setStyleSheet('background-color: rgb(85, 170, 255); border: 1px solid;')
+        self.pushButton_2.setStyleSheet('border: 1px solid;')
+        self.pushButton_3.setStyleSheet('border: 1px solid;')
         self.stackedWidget.setCurrentIndex(0)
 
     # 注册按钮
     def register(self):
-        self.pushButton_3.setStyleSheet('background-color: #83c0f4')
-        self.pushButton.setStyleSheet('background-color: white')
-        self.pushButton_2.setStyleSheet('background-color: white')
+        self.pushButton_3.setStyleSheet('background-color: rgb(85, 170, 255); border: 1px solid;')
+        self.pushButton.setStyleSheet('border: 1px solid;')
+        self.pushButton_2.setStyleSheet('border: 1px solid;')
         self.stackedWidget.setCurrentIndex(2)
+
+    # 清空按钮的响应事件
+    def pushButton8(self):
+        self.lineEdit_2.setText("")
+        self.lineEdit_3.setText("")
 
     # 登录按钮的响应事件
     def pushButton4(self):

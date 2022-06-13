@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -184,7 +184,7 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
          <rect>
           <x>10</x>
           <y>100</y>
-          <width>771</width>
+          <width>781</width>
           <height>441</height>
          </rect>
         </property>
@@ -234,11 +234,23 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
        <widget class="QPushButton" name="pushButton_6">
         <property name="geometry">
          <rect>
-          <x>680</x>
+          <x>700</x>
           <y>60</y>
           <width>93</width>
           <height>28</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+   	text-decoration:none;  
+    background:#05B8CC;
+    color:#f2f2f2;    
+    font-size:20px;  
+    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  
+    font-weight:bold; 
+    border-radius:3px;
+}
+QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }</string>
         </property>
         <property name="text">
          <string>发送</string>

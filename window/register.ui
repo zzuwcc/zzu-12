@@ -14,7 +14,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string/>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
@@ -26,7 +29,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QPushButton" name="pushButton_4">
@@ -37,6 +40,11 @@
        <width>93</width>
        <height>28</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid;
+}</string>
      </property>
      <property name="text">
       <string>登录</string>
@@ -50,6 +58,11 @@
        <width>93</width>
        <height>28</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid;
+}</string>
      </property>
      <property name="text">
       <string>清空</string>
@@ -116,7 +129,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>摄像头捕获的数据</string>
+      <string/>
      </property>
     </widget>
    </widget>
@@ -139,7 +152,11 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit_3"/>
+       <widget class="QLineEdit" name="lineEdit_3">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_5">
@@ -166,6 +183,11 @@
        <height>28</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid;
+}</string>
+     </property>
      <property name="text">
       <string>清空</string>
      </property>
@@ -178,6 +200,11 @@
        <width>93</width>
        <height>28</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border: 1px solid;
+}</string>
      </property>
      <property name="text">
       <string>登录</string>
@@ -195,7 +222,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
@@ -206,6 +233,12 @@
      <width>91</width>
      <height>28</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+background-color: rgb(85, 170, 255);
+border: 1px solid;
+}</string>
    </property>
    <property name="text">
     <string>密码登录</string>
@@ -221,10 +254,9 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton{    
-    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  ;
-}
-QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }</string>
+    <string notr="true">QPushButton{
+border: 1px solid;
+}</string>
    </property>
    <property name="text">
     <string>人脸识别登录</string>
@@ -240,7 +272,9 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">QPushButton{
+border: 1px solid;
+}</string>
    </property>
    <property name="text">
     <string>注册</string>
