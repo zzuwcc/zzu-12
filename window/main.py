@@ -17,7 +17,7 @@ from window import entryUser
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
-
+from email.utils import formataddr
 
 class Ui_Main(object):
     def setupUi(self, Main):
