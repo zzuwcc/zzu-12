@@ -197,10 +197,8 @@ class Ui_Form(object):
         my_scan_face = fd.detect(name='')#建立人脸识别类，此处还需互斥控制，暂时不做考虑
         id = my_scan_face.scan_face() #得到当前人脸特定的id，0为未识别出已录入的人脸
         scan_name = my_scan_face.id_dict[id] #得到对应id的名字
-
-        cv2image = cv2.cvtColor(self.img, cv2.COLOR_BGR2RGBA)  # 转换颜色从BGR到RGBA
-        current_image = Image.fromarray(cv2image)  # 将图像转换成Image对象
-        imgtk = ImageTk.PhotoImage(image=current_image)     #此为可以展示的图像
+        
+        image_now = my_scan_face.get_image() #得到当前图像
         ########
         #注：前半段为按钮触发器使用的内容，后半段图片转换应该与此并行发生
         ########

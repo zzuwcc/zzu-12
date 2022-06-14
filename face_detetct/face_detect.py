@@ -263,7 +263,7 @@ class detect:
                     cv2.putText(self.img, str(confidence), (x + 5, y + h - 5), font, 1, (0, 0, 0), 1)
 
                     # 展示结果
-                    # cv2.imshow('camera', img)
+                    #cv2.imshow('camera', self.img)
 
                     print("conf=" + str(conf), end="\t")
                     if 15 > conf > 0:
@@ -370,6 +370,28 @@ class detect:
             self.panel.imgtk = imgtk
             self.panel.config(image=imgtk)
             self.window.after(1, self.video_loop)
+    #重置编号
+    def set_name(self,name):
+        self.name = name
+        
+
+    #返回当前图片 格式为ImgeTK.PhotoImage
+    def get_image(self):
+        if self.success:
+            cv2.waitKey(1)
+            cv2image = cv2.cvtColor(self.img, cv2.COLOR_BGR2RGBA)  # 转换颜色从BGR到RGBA
+            current_image = Image.fromarray(cv2image)  # 将图像转换成Image对象
+            imgtk = ImageTk.PhotoImage(image=current_image)
+            return imgtk
+
+    def load_new_face(self):
+        self.Total_face_num += 1
+        self.Get_new_face()  # 采集新人脸
+        print("采集完毕，开始训练")
+        print("锁被释放0")
+
+        self.Train_new_face()  # 训练采集到的新人脸
+        self.write_config(self.name)  # 修改配置文件
 
 if __name__ == "__main__":
     test = detect("zzl")

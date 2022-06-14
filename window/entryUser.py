@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import face_detetct as fd
 
 
 class Ui_Dialog(object):
@@ -20,7 +21,7 @@ class Ui_Dialog(object):
         self.label.setText("")
         self.label.setObjectName("label")
         self.retranslateUi(Dialog)
-
+        self.myfacedetect = fd.detect('')
         self.label.setStyleSheet("background-color: black")
 
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -31,5 +32,6 @@ class Ui_Dialog(object):
 
     # 录入人脸信息的函数  self.label变量是用来显示图像的标签对象, window.id变量是当前正在录入人脸信息的用户id
     def capture(self):
+        self.myfacedetect.set_name(name = '邮箱号') #此处需填写录入人脸的邮箱号
         pass
 
