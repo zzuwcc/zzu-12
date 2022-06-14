@@ -3,7 +3,7 @@ import pymysql
 # 连接数据库
 import window
 
-con = pymysql.connect(host='localhost', user='root', password='Victory&40413', database='shengchanshixi',
+con = pymysql.connect(host='112.124.17.13', user='xiaoming', password='123456', database='shengchanshixi',
                       charset='utf8')
 print("数据库连接成功")
 # 创建游标
