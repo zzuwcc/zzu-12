@@ -9,12 +9,16 @@ from PIL import Image, ImageTk
 system_state_lock = 0 # 标志系统状态的量 0表示无子线程在运行 1表示正在刷脸 2表示正在录入新面孔。
 # 相当于mutex锁，用于线程同步
 
-pth = "F:/pycharm-workspace/shenchanshixi/face_detect/"
+pth = "H:\email_classifier\zzu-12\\face_detect\\"
 pth_xml = pth
-
 
 class detect:
     def __init__(self,name) :
+
+        pth = os.getcwd()
+        pth = os.path.join(pth,"face_detect/")
+        print(pth)
+
         self.name = name
         self.id_dict = {}  # 字典里存的是id——name键值对
         self.Total_face_num = 0   # 已经被识别有用户名的人脸个数
