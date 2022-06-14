@@ -10,7 +10,7 @@ system_state_lock = 0 # 标志系统状态的量 0表示无子线程在运行 1�
 # 相当于mutex锁，用于线程同步
 
 pth = "H:\email_classifier\zzu-12\\face_detetct\\"
-pth_xml = "D:\\anaconda\Lib\site-packages\cv2\data\\"
+pth_xml = pth
 
 class detect:
     def __init__(self,name) :
