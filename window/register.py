@@ -9,6 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+import window.face
 from core.database import *
 from window.main import *
 from window.dialog import *
@@ -29,14 +31,14 @@ class Ui_Form(object):
         self.pushButton_4 = QtWidgets.QPushButton(self.page)
         self.pushButton_4.setGeometry(QtCore.QRect(0, 170, 93, 28))
         self.pushButton_4.setStyleSheet("QPushButton{\n"
-"border: 1px solid;\n"
-"}")
+                                        "border: 1px solid;\n"
+                                        "}")
         self.pushButton_4.setObjectName("pushButton_4")
         self.pushButton_5 = QtWidgets.QPushButton(self.page)
         self.pushButton_5.setGeometry(QtCore.QRect(210, 170, 93, 28))
         self.pushButton_5.setStyleSheet("QPushButton{\n"
-"border: 1px solid;\n"
-"}")
+                                        "border: 1px solid;\n"
+                                        "}")
         self.pushButton_5.setObjectName("pushButton_5")
         self.radioButton = QtWidgets.QRadioButton(self.page)
         self.radioButton.setGeometry(QtCore.QRect(0, 130, 141, 19))
@@ -93,14 +95,14 @@ class Ui_Form(object):
         self.pushButton_8 = QtWidgets.QPushButton(self.page_4)
         self.pushButton_8.setGeometry(QtCore.QRect(210, 190, 93, 28))
         self.pushButton_8.setStyleSheet("QPushButton{\n"
-"border: 1px solid;\n"
-"}")
+                                        "border: 1px solid;\n"
+                                        "}")
         self.pushButton_8.setObjectName("pushButton_8")
         self.pushButton_6 = QtWidgets.QPushButton(self.page_4)
         self.pushButton_6.setGeometry(QtCore.QRect(10, 190, 93, 28))
         self.pushButton_6.setStyleSheet("QPushButton{\n"
-"border: 1px solid;\n"
-"}")
+                                        "border: 1px solid;\n"
+                                        "}")
         self.pushButton_6.setObjectName("pushButton_6")
         self.stackedWidget.addWidget(self.page_4)
         self.label = QtWidgets.QLabel(Form)
@@ -110,21 +112,21 @@ class Ui_Form(object):
         self.pushButton = QtWidgets.QPushButton(Form)
         self.pushButton.setGeometry(QtCore.QRect(590, 70, 91, 28))
         self.pushButton.setStyleSheet("QPushButton{\n"
-"background-color: rgb(85, 170, 255);\n"
-"border: 1px solid;\n"
-"}")
+                                      "background-color: rgb(85, 170, 255);\n"
+                                      "border: 1px solid;\n"
+                                      "}")
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(Form)
         self.pushButton_2.setGeometry(QtCore.QRect(700, 70, 111, 29))
         self.pushButton_2.setStyleSheet("QPushButton{\n"
-"border: 1px solid;\n"
-"}")
+                                        "border: 1px solid;\n"
+                                        "}")
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(Form)
         self.pushButton_3.setGeometry(QtCore.QRect(830, 70, 81, 29))
         self.pushButton_3.setStyleSheet("QPushButton{\n"
-"border: 1px solid;\n"
-"}")
+                                        "border: 1px solid;\n"
+                                        "}")
         self.pushButton_3.setObjectName("pushButton_3")
 
         import os
@@ -176,12 +178,18 @@ class Ui_Form(object):
         self.pushButton_2.setText(_translate("Form", "人脸识别登录"))
         self.pushButton_3.setText(_translate("Form", "注册"))
 
-    # 人脸识别方式登录接口  self.label_3变量是用来显示摄像头捕获的数据
+    # 人脸识别方式登录接口  self.face.label变量用来显示摄像头捕获的数据，self.face.label_2用来显示提示信息
     def face(self):
         self.pushButton_2.setStyleSheet('background-color: rgb(85, 170, 255); border: 1px solid;')
         self.pushButton.setStyleSheet('border: 1px solid;')
         self.pushButton_3.setStyleSheet('border: 1px solid;')
         self.stackedWidget.setCurrentIndex(1)
+        self.fWidget = QtWidgets.QWidget()
+        self.face = window.face.Ui_Form()
+        self.face.setupUi(self.fWidget)
+        self.fWidget.show()
+        self.face.label_2.setText("哈哈哈")
+
 
     # 密码登录方式
     def password(self):
