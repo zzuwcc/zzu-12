@@ -9,7 +9,7 @@ from PIL import Image, ImageTk
 system_state_lock = 0 # 标志系统状态的量 0表示无子线程在运行 1表示正在刷脸 2表示正在录入新面孔。
 # 相当于mutex锁，用于线程同步
 
-pth = "H:\email_classifier\zzu-12\\face_detect\\"
+pth = "face_detect/"
 pth_xml = pth
 
 class detect:

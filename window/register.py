@@ -195,9 +195,7 @@ class Ui_Form(object):
         self.face.setupUi(self.fWidget)
         self.face.label_2.setText("哈哈哈")
         self.fWidget.show()
-        print("运行到了这里")
         my_scan_face = detect(name='')#建立人脸识别类，此处还需互斥控制，暂时不做考虑
-        print("运行到了这里")
         id = my_scan_face.scan_face() #得到当前人脸特定的id，0为未识别出已录入的人脸
         if id!=0:
             scan_name = my_scan_face.id_dict[id] #得到对应id的名字
