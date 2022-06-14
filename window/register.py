@@ -14,7 +14,7 @@ import window.face
 from core.database import *
 from window.main import *
 from window.dialog import *
-import face_detetct as fd
+from face_detect.face_detect import detect
 from PIL import Image, ImageTk
 import cv2
 
@@ -149,7 +149,7 @@ class Ui_Form(object):
         Form.register = self.register
         Form.pb4 = self.pushButton4
         Form.pb5 = self.pushButton5
-        Form.pb6 = self.pushButton6
+        Form.pb7 = self.pushButton7
         Form.pb8 = self.pushButton8
         pixmap = QtGui.QPixmap("./picture/log.png")
         self.label.setPixmap(pixmap)
@@ -162,7 +162,6 @@ class Ui_Form(object):
         self.pushButton_3.clicked.connect(Form.register)
         self.pushButton_4.clicked.connect(Form.pb4)
         self.pushButton_5.clicked.connect(Form.pb5)
-        self.pushButton_6.clicked.connect(Form.pb6)
         self.pushButton_8.clicked.connect(Form.pb8)
 
         self.retranslateUi(Form)
@@ -190,16 +189,16 @@ class Ui_Form(object):
         self.pushButton.setStyleSheet('border: 1px solid;')
         self.pushButton_3.setStyleSheet('border: 1px solid;')
         self.stackedWidget.setCurrentIndex(1)
-        self.fWidget=QtWidgets.QWidget()
-        self.face=window.face.Ui_Form()
-        self.face.setupUi(self.fWidget)
         self.face.label_2.setText("哈哈哈")
         self.fWidget.show()
-        print("运行到了这里")
-        my_scan_face = fd.detect(name='')#建立人脸识别类，此处还需互斥控制，暂时不做考虑
-        print("运行到了这里")
+        self.face.setupUi(self.fWidget)
+        self.face = window.face.Ui_Form()
+        self.fWidget = QtWidgets.QWidget()
+
+        my_scan_face = detect(name='')#建立人脸识别类，此处还需互斥控制，暂时不做考虑
         id = my_scan_face.scan_face() #得到当前人脸特定的id，0为未识别出已录入的人脸
-        scan_name = my_scan_face.id_dict[id] #得到对应id的名字
+        if id!=0:
+            scan_name = my_scan_face.id_dict[id] #得到对应id的名字
         
         image_now = my_scan_face.get_image() #得到当前图像
         ########
@@ -259,7 +258,7 @@ class Ui_Form(object):
         self.lineEdit_5.setText("")
 
     # 注册按钮的响应事件
-    def pushButton6(self):
+    def pushButton7(self):
         id = self.lineEdit_3.text()
         password = self.lineEdit_2.text()
         result = insertUser(id, password)
@@ -271,8 +270,8 @@ class Ui_Form(object):
             d_ui.label.setText("注册失败!")
             d.show()
         else:
-            self.d = QtWidgets.QDialog()
+            d = QtWidgets.QDialog()
             d_ui = Ui_Dialog()
-            d_ui.setupUi(self.d)
+            d_ui.setupUi(d)
             d_ui.label.setText("注册成功!")
-            self.d.show()
+            d.show()
