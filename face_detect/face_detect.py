@@ -200,7 +200,7 @@ class detect:
 ############################
 #以上是录入新人脸信息功能的实现
 #############################
-    def scan_face(self):
+    def scan_face(self, window):
         # 使用之前训练好的模型
         for i in range(self.Total_face_num):  # 每个识别器都要用
             i += 1

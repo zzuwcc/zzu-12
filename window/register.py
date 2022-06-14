@@ -196,11 +196,12 @@ class Ui_Form(object):
         self.face.label_2.setText("哈哈哈")
         self.fWidget.show()
         my_scan_face = detect(name='')#建立人脸识别类，此处还需互斥控制，暂时不做考虑
-        id = my_scan_face.scan_face() #得到当前人脸特定的id，0为未识别出已录入的人脸
+        id = my_scan_face.scan_face(self) #得到当前人脸特定的id，0为未识别出已录入的人脸
         if id!=0:
             scan_name = my_scan_face.id_dict[id] #得到对应id的名字
-        
-        image_now = my_scan_face.get_image() #得到当前图像
+        else:
+            pass
+
         ########
         #注：前半段为按钮触发器使用的内容，后半段图片转换应该与此并行发生
         ########

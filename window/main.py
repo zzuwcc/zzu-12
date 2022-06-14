@@ -231,8 +231,13 @@ class Ui_Main(object):
     # self.lineEdit_3.text(): 邮件主题
     # self.plainTextEdit.toPalinText(): 发送内容
     def PB6(self):
+        print("运行到了这里")
+        print(self.plainTextEdit.toPlainText())
+        print(type(self.plainTextEdit.toPlainText()))
         msg = MIMEText(self.plainTextEdit.toPalinText(), 'plain', 'utf-8')
+        print("运行到了这里")
         msg["From"] = formataddr([self.lineEdit_2.text(), window.id])
+        print("运行到了这里")
         msg["To"] = self.lineEdit.text()
 
         msg['Subject'] = Header(self.lineEdit_3.text(), 'utf-8')
