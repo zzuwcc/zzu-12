@@ -204,7 +204,7 @@ class detect:
         # 使用之前训练好的模型
         for i in range(self.Total_face_num):  # 每个识别器都要用
             i += 1
-            
+
             yml = pth+'face_cache/'+str(i) + ".yml"   # yml = str(i) + ".yml"
             print("\n本次:" + yml)  # 调试信息
             self.recognizer.read(yml)
@@ -218,8 +218,8 @@ class detect:
                 while system_state_lock == 2:  # 如果正在录入新面孔就阻塞
                     print("\r刷脸被录入面容阻塞", end="")
                     pass
-
                 self.success, self.img = self.camera.read()
+                print(type(self.img))
                 gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
                 # 识别人脸
                 faces = self.face_cascade.detectMultiScale(

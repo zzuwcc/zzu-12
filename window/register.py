@@ -68,7 +68,7 @@ class Ui_Form(object):
         self.stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
-        #扫脸登录
+        # 扫脸登录
         self.label_3 = QtWidgets.QLabel(self.page_2)
         self.label_3.setGeometry(QtCore.QRect(10, 70, 321, 271))
         self.label_3.setText("")
@@ -195,15 +195,15 @@ class Ui_Form(object):
         self.face.setupUi(self.fWidget)
         self.face.label_2.setText("哈哈哈")
         self.fWidget.show()
-        my_scan_face = detect(name='')#建立人脸识别类，此处还需互斥控制，暂时不做考虑
-        id = my_scan_face.scan_face(self) #得到当前人脸特定的id，0为未识别出已录入的人脸
-        if id!=0:
-            scan_name = my_scan_face.id_dict[id] #得到对应id的名字
+        my_scan_face = detect(name='')  # 建立人脸识别类，此处还需互斥控制，暂时不做考虑
+        id = my_scan_face.scan_face(self)  # 得到当前人脸特定的id，0为未识别出已录入的人脸
+        if id != 0:
+            scan_name = my_scan_face.id_dict[id]  # 得到对应id的名字
         else:
             pass
 
         ########
-        #注：前半段为按钮触发器使用的内容，后半段图片转换应该与此并行发生
+        # 注：前半段为按钮触发器使用的内容，后半段图片转换应该与此并行发生
         ########
 
     # 密码登录方式

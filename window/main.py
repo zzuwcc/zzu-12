@@ -237,7 +237,6 @@ class Ui_Main(object):
             print("运行到了这里")
             msg["From"] = formataddr([self.lineEdit_2.text(), window.id])
             msg["To"] = Header(self.lineEdit.text())
-
             msg['Subject'] = Header(self.lineEdit_3.text(), 'utf-8')
             # 发送邮件
             smtp_server = "smtp.qq.com"
@@ -253,7 +252,7 @@ class Ui_Main(object):
             server.quit()
         
 
-    # 爬取邮件的槽函数，并存放到 ./file/email/用户id 目录下
+    # 爬取邮件的槽函数，并存放到 ./file/email 目录下
     # window.id: 发送者邮箱
     # window.password: 发送者邮箱密码
     def getEmail(self):
