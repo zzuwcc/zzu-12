@@ -232,7 +232,7 @@ class Ui_Main(object):
     # self.plainTextEdit.toPalinText(): 发送内容
     def PB6(self):
         try:
-            msg = MIMEText(self.plainTextEdit.toPalinText(), 'plain', 'utf-8')
+            msg = MIMEText(self.plainTextEdit.toPlainText(), 'plain', 'utf-8')
             msg["From"] = formataddr([self.lineEdit_2.text(), window.id])
             msg["To"] = Header(self.lineEdit.text())
 
