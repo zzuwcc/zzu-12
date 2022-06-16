@@ -5,11 +5,13 @@ import shutil
 import threading
 import tkinter as tk
 from PIL import Image, ImageTk
+from PyQt5 import QtGui
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QHBoxLayout
 
 system_state_lock = 0 # 标志系统状态的量 0表示无子线程在运行 1表示正在刷脸 2表示正在录入新面孔。
 # 相当于mutex锁，用于线程同步
 
-pth = "face_detect/"
+pth = "H:\email_classifier\zzu-12\\face_detect\\"
 pth_xml = pth
 
 class detect:
@@ -133,7 +135,7 @@ class detect:
         recog = cv2.face.LBPHFaceRecognizer_create()
 
         # 调用函数并将数据喂给识别器训练
-        faces, ids = self.get_images_and_labels(path)
+        faces, ids = self.get_images_and_labels(os.path.join(pth,path))
         print('本次用于训练的识别码为:')  # 调试信息
         print(ids)  # 输出识别码
 
@@ -141,7 +143,7 @@ class detect:
         recog.train(faces, np.array(ids))
         # 保存模型
 
-        yml ='face_cache/'+ str(self.Total_face_num) + ".yml"  # yml = str(Total_face_num) + ".yml" 
+        yml =pth+'face_cache/'+ str(self.Total_face_num) + ".yml"  # yml = str(Total_face_num) + ".yml" 
         rec_f = open(yml, "w+")
         rec_f.close()
         recog.save(yml)
@@ -200,8 +202,10 @@ class detect:
 ############################
 #以上是录入新人脸信息功能的实现
 #############################
-    def scan_face(self, window):
+    def scan_face(self, window = None):
         # 使用之前训练好的模型
+        if self.Total_face_num==0:
+            print("no face in database!\n")
         for i in range(self.Total_face_num):  # 每个识别器都要用
             i += 1
 
@@ -219,7 +223,6 @@ class detect:
                     print("\r刷脸被录入面容阻塞", end="")
                     pass
                 self.success, self.img = self.camera.read()
-                print(type(self.img))
                 gray = cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY)
                 # 识别人脸
                 faces = self.face_cascade.detectMultiScale(
@@ -268,7 +271,11 @@ class detect:
                     cv2.putText(self.img, str(confidence), (x + 5, y + h - 5), font, 1, (0, 0, 0), 1)
 
                     # 展示结果
-                    #cv2.imshow('camera', self.img)
+                    # cv2.imshow('camera', self.img)
+                    img2 = cv2.cvtColor(self.img,cv2.COLOR_BGR2RGB)
+                    _image = QtGui.QImage(img2[:], img2.shape[1], img2.shape[0], img2.shape[1] * 3, QtGui.QImage.Format_RGB888) #pyqt5转换成自己能放的图片格式
+                    jpg_out = QtGui.QPixmap(_image).scaled(window.face.label.width(), window.face.label.height()) #设置图片大小
+                    window.face.label.setPixmap(jpg_out)
 
                     print("conf=" + str(conf), end="\t")
                     if 15 > conf > 0:

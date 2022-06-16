@@ -199,8 +199,11 @@ class Ui_Form(object):
         id = my_scan_face.scan_face(self)  # 得到当前人脸特定的id，0为未识别出已录入的人脸
         if id != 0:
             scan_name = my_scan_face.id_dict[id]  # 得到对应id的名字
+            print("your namne is :"+scan_name)
+            self.face.label_2.setText("欢迎你："+scan_name)
         else:
-            pass
+            self.face.label_2.setText("没找到已注册的用户")
+            print("没找到已注册的用户")
 
         ########
         # 注：前半段为按钮触发器使用的内容，后半段图片转换应该与此并行发生
