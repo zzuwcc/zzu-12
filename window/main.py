@@ -26,6 +26,13 @@ from email.parser import Parser
 from email.utils import parseaddr
 from bs4 import BeautifulSoup
 
+
+import re
+import jieba
+import pickle
+from sklearn.linear_model import LogisticRegressionCV
+from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
+
 class Ui_Main(object):
     def __init__(self):
         # 1代表当前在收件箱， -1代表在垃圾箱
@@ -539,7 +546,37 @@ class Ui_Main(object):
 
     # 垃圾邮件识别 path是待识别文件的路径 返回-1代表是垃圾邮件，返回1代表是正常邮件
     def judgeEmail(self, path):
-        pass
+        # 加载文件，读取文本内容
+        with open(path, "r", encoding="utf8", errors='ignore') as file:
+            file_str = file.read()
+            index = file_str.find("Text")
+            text = file_str[index+6:]
+        # 加载停用词
+        with open('./stopwords.txt', encoding='utf8') as file:
+            file_str = file.read()
+            stopword_list = file_str.split('\n')
+        # 加载训练好的逻辑回归模型参数
+        with open('all_model.pickle', 'rb') as file:
+            model_para = pickle.load(file)
+            cv = model_para['CountVectorizer']
+            tfidf = model_para['TfidfTransformer']
+            lr = model_para['LogisticRegressionCV']
+        # 去除文本中的多个空格和换行
+        text = re.sub('\s+', '', re.sub("\n", "", text))
+        # 进行分词
+        cutwords = [item for item in jieba.lcut(text) if item not in set(stopword_list)]
+        text_list = [' '.join(cutwords)]
+        # 计算词频
+        count = cv.transform(text_list)
+        # 计算逆文本词频
+        tfidf_matrix = tfidf.transform(count)
+        # 得到预测结果（1：spam, 0：ham）
+        res = lr.predict(tfidf_matrix)[0]
+        # 返回需要的结果
+        if res == 1:
+            return -1
+        else:
+            return 1
 
     # 垃圾分类  path是爬取的邮件的路径，把垃圾邮件存放到 ./file/email/用户id/spamEmail 目录下，把非垃圾邮件存放到./file/email/用户id/normalEmail 目录下
     def classifyEmail(self, path):
