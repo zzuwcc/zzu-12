@@ -19,6 +19,13 @@ from email.mime.text import MIMEText
 from email.header import Header
 from email.utils import formataddr
 
+import time
+from email.header import decode_header
+import poplib
+from email.parser import Parser
+from email.utils import parseaddr
+from bs4 import BeautifulSoup
+
 class Ui_Main(object):
     def setupUi(self, Main):
         Main.setObjectName("Main")
@@ -255,7 +262,99 @@ class Ui_Main(object):
     # window.id: 发送者邮箱
     # window.password: 发送者邮箱密码
     def getEmail(self):
-        pass
+        user = window.id
+        password = window.password
+        pop3_server = 'pop.qq.com'
+        # 连接到POP3服务器
+        server = poplib.POP3(pop3_server)
+        server.user(user)
+        server.pass_(password)
+        email_num, email_size = server.stat()
+        print("消息的数量: {0}, 消息的总大小: {1}".format(email_num, email_size))
+        # # 使用list()返回所有邮件的编号，默认为字节类型的串
+        rsp, msg_list, rsp_siz = server.list()
+        # 循环遍历每个邮件
+        for i in range(0, len(msg_list)):
+            filename = "邮件%d.txt" % i
+            file = open(filename, 'w', encoding='utf-8')
+            print("%d==================" % i)
+            # 获取一封邮件，索引号从1开始
+            index = len(msg_list) - i
+            resp, lines, octets = server.retr(index)
+            # lindes存储了邮件的原始文本的每一行
+            # 可以获得整个邮件的原始文本
+            # print(lines)
+            msg_content = b'\r\n'.join(lines).decode('utf-8', 'ignore')
+            # 解析出邮件：
+            msg = Parser().parsestr(msg_content)
+            self.print_info(msg, file)
+            file.close()
+        server.quit()
+    # 爬邮件子函数
+    def print_info(self, msg, file, indent=0):
+        if indent == 0:
+            for header in ['From', 'To', 'Subject', 'Date']:
+                value = msg.get(header, '')
+                if value:
+                    if header == 'Date':
+                        time3 = msg.get("Date").split('+')[0]
+                        time2 = time3.split('-')[0]
+                        time1 = time.strptime(time2, '%a, %d %b %Y %H:%M:%S ')
+                        file.write("时间：%d年%d月%d日 %d:%d:%d\n" % (time1.tm_year, time1.tm_mon, time1.tm_mday, time1.tm_hour, time1.tm_min, time1.tm_sec))
+                        break
+                    elif header == 'Subject':
+                        value = self.decode_str(value)
+                        file.write('主题: %s\n' % value)
+
+                    else:
+                        hdr, addr = parseaddr(value)
+                        name = self.decode_str(hdr)
+                        value = u'%s <%s>' % (name, addr)
+                        file.write('%s: %s\n' % (header, value))
+        if msg.is_multipart():
+
+            parts = msg.get_payload()
+            for n, part in enumerate(parts):
+                self.print_info(part, file, indent + 1)
+                if part.get_content_type() == 'text/plain':
+                    return
+
+        else:
+            content_type = msg.get_content_type()
+            if content_type == 'text/plain':
+                content = msg.get_payload(decode=True)
+                charset = self.guess_charset(msg)
+                if charset:
+                    content = content.decode(charset)
+                if "".join([s for s in content.splitlines(True) if s.strip()]):
+                    file.write('Text: %s' % ("".join([s for s in content.splitlines(True) if s.strip()])))
+            elif content_type == 'text/html':
+                content = msg.get_payload(decode=True)
+                charset = self.guess_charset(msg)
+                if charset:
+                    content = content.decode(charset, 'ignore')
+                soup = BeautifulSoup(content, "html.parser")
+                if "".join([s for s in soup.text.splitlines(True) if s.strip()]):
+                    file.write(('Text: %s' % "".join([s for s in soup.text.splitlines(True) if s.strip()])))
+            else:
+                filename = msg.get_filename()
+                if self.decode_str(filename):
+                    file.write('Attachment: %s' % ( self.decode_str(filename)))
+    # 爬邮件子函数
+    def decode_str(self,s):
+        value, charset = decode_header(s)[0]
+        if charset:
+            value = value.decode(charset)
+        return value
+    # 爬邮件子函数
+    def guess_charset(self,msg):
+        charset = msg.get_charset()
+        if charset is None:
+            content_type = msg.get('Content-Type', '').lower()
+            pos = content_type.find('charset=')
+            if pos >= 0:
+                charset = content_type[pos + 8:].split(';')[0]
+        return charset
 
     # 垃圾邮件识别 path是待识别文件的路径 返回-1代表是垃圾邮件，返回1代表是正常邮件
     def judgeEmail(self, path):
