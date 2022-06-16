@@ -10,6 +10,10 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+import window
+from face_detect.face_detect import detect
+from window.main import Ui_Main
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -25,10 +29,37 @@ class Ui_Form(object):
         self.label_2.setStyleSheet("background-color: rgb(0, 170, 0);")
         self.label_2.setText("")
         self.label_2.setObjectName("label_2")
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(690, 20, 121, 61))
+        self.pushButton.setObjectName("pushButton")
+
+        self.Form = Form
+        Form.pB = self.pB
 
         self.retranslateUi(Form)
+        self.pushButton.clicked.connect(Form.pB)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
+        self.pushButton.setText(_translate("Form", "重试"))
+
+    def pB(self):
+        my_scan_face = detect(name='')  # 建立人脸识别类，此处还需互斥控制，暂时不做考虑
+        id = my_scan_face.scan_face(self)  # 得到当前人脸特定的id，0为未识别出已录入的人脸
+        if id != 0:
+            scan_name = my_scan_face.id_dict[id]  # 得到对应id的名字
+            print("your namne is :"+scan_name)
+            self.label_2.setText("欢迎你："+scan_name)
+            self.w = QtWidgets.QWidget()
+            self.w_ui = Ui_Main()
+            self.w_ui.setupUi(self.w)
+            self.w_ui.label.show()
+            self.w.show()
+            self.Form.father.close()
+            self.Form.close()
+            window.main = self.w
+        else:
+            self.label_2.setText("没找到已注册的用户")
+            print("没找到已注册的用户")

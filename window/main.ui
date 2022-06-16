@@ -164,17 +164,42 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <widget class="QListWidget" name="listWidget">
         <property name="geometry">
          <rect>
-          <x>5</x>
-          <y>1</y>
-          <width>801</width>
-          <height>541</height>
+          <x>0</x>
+          <y>0</y>
+          <width>811</width>
+          <height>461</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_11">
+        <property name="geometry">
+         <rect>
+          <x>680</x>
+          <y>470</y>
+          <width>121</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+   	text-decoration:none;  
+    background:#05B8CC;
+    color:#f2f2f2;    
+    font-size:20px;  
+    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  
+    font-weight:bold; 
+    border-radius:3px;
+}
+QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }</string>
+        </property>
+        <property name="text">
+         <string>手动收取</string>
         </property>
        </widget>
       </widget>
@@ -257,6 +282,68 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
         </property>
        </widget>
       </widget>
+      <widget class="QWidget" name="page_4">
+       <widget class="QTextBrowser" name="textBrowser_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>801</width>
+          <height>431</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>450</y>
+          <width>141</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+   	text-decoration:none;  
+    background:#05B8CC;
+    color:#f2f2f2;    
+    font-size:20px;  
+    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  
+    font-weight:bold; 
+    border-radius:3px;
+}
+QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }</string>
+        </property>
+        <property name="text">
+         <string>移到收件箱</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_10">
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>450</y>
+          <width>141</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+   	text-decoration:none;  
+    background:#05B8CC;
+    color:#f2f2f2;    
+    font-size:20px;  
+    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  
+    font-weight:bold; 
+    border-radius:3px;
+}
+QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }</string>
+        </property>
+        <property name="text">
+         <string>返回</string>
+        </property>
+       </widget>
+      </widget>
       <widget class="QWidget" name="page_2">
        <widget class="QTextBrowser" name="textBrowser">
         <property name="geometry">
@@ -264,8 +351,58 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
           <x>-5</x>
           <y>1</y>
           <width>811</width>
-          <height>551</height>
+          <height>411</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>440</y>
+          <width>141</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+   	text-decoration:none;  
+    background:#05B8CC;
+    color:#f2f2f2;    
+    font-size:20px;  
+    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  
+    font-weight:bold; 
+    border-radius:3px;
+}
+QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }</string>
+        </property>
+        <property name="text">
+         <string>移到垃圾箱</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>440</y>
+          <width>131</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+   	text-decoration:none;  
+    background:#05B8CC;
+    color:#f2f2f2;    
+    font-size:20px;  
+    font-family: 微软雅黑,宋体,Arial,Helvetica,Verdana,sans-serif;  
+    font-weight:bold; 
+    border-radius:3px;
+}
+QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: bold; font-family:Microsoft YaHei; }</string>
+        </property>
+        <property name="text">
+         <string>返回</string>
         </property>
        </widget>
       </widget>
@@ -397,6 +534,86 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_9</sender>
+   <signal>clicked()</signal>
+   <receiver>Main</receiver>
+   <slot>pB9()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>715</x>
+     <y>619</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>613</x>
+     <y>737</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_10</sender>
+   <signal>clicked()</signal>
+   <receiver>Main</receiver>
+   <slot>pB10()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>914</x>
+     <y>630</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>941</x>
+     <y>751</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>Main</receiver>
+   <slot>pB7()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>770</x>
+     <y>613</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>766</x>
+     <y>728</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>Main</receiver>
+   <slot>pB8()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>873</x>
+     <y>616</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>864</x>
+     <y>756</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_11</sender>
+   <signal>clicked()</signal>
+   <receiver>Main</receiver>
+   <slot>pB11()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>903</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>908</x>
+     <y>748</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>pB2()</slot>
@@ -405,5 +622,10 @@ QPushButton::pressed{ background: #3C79F2; border-color: #11505C; font-weight: b
   <slot>PB1()</slot>
   <slot>pB5()</slot>
   <slot>pB6()</slot>
+  <slot>pB9()</slot>
+  <slot>pB10()</slot>
+  <slot>pB7()</slot>
+  <slot>pB8()</slot>
+  <slot>pB11()</slot>
  </slots>
 </ui>
